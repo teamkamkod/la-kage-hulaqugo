@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Kage | Salon de coiffure & beauté à Nantes</title>
-<meta name="description" content="La Kage, salon de coiffure et beauté à Nantes. Coupes tendance, ambiance musicale, accueil chaleureux. Horaires flexibles, avis 4,7/5. Prenez rendez-vous !">
+<meta name="description" content="La Kage, salon de coiffure et beauté à Nantes. Coupes tendance, ambiance musicale, accueil chaleureux. Horaires flexibles, avis 4.7/5. Prenez rendez-vous !">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #2C3E50;
-    --secondary: #E8D5B7;
-    --background: #FDF8F5;
-    --text: #2C3E50;
-    --cta: #C0392B;
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Montserrat', sans-serif;
+    --primary: #C4552D;
+    --secondary: #7A8B5E;
+    --background: #FDF6EC;
+    --text: #3E2C23;
+    --cta: #C4552D;
+    --font-heading: 'DM Serif Display', serif;
+    --font-body: 'Jost', sans-serif;
     --radius: 12px;
-    --transition: 0.4s ease;
+    --shadow-soft: 0 8px 40px rgba(62,44,35,0.10);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,20 +29,25 @@
     font-family: var(--font-body);
     background: var(--background);
     color: var(--text);
+    font-size: 16px;
     line-height: 1.7;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4 { font-family: var(--font-heading); }
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  a { color: inherit; text-decoration: none; }
 
   img { max-width: 100%; display: block; }
 
-  a { text-decoration: none; color: inherit; }
-
-  /* FADE-IN ANIMATION */
+  /* ── FADE-IN ANIMATION ── */
   .fade-in {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(28px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .fade-in.visible {
@@ -50,31 +55,27 @@
     transform: translateY(0);
   }
 
-  /* NAV */
+  /* ── NAV ── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 1000;
-    background: rgba(253, 248, 245, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(232, 213, 183, 0.4);
-    padding: 0 5%;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
+    padding: 1rem 2rem;
+    background: rgba(253,246,236,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(196,85,45,0.10);
+    transition: box-shadow 0.3s;
   }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(62,44,35,0.10); }
 
   .nav-logo {
     font-family: var(--font-heading);
     font-size: 1.6rem;
-    font-weight: 700;
     color: var(--primary);
-    letter-spacing: 1px;
-  }
-
-  .nav-logo span {
-    color: var(--cta);
+    letter-spacing: 0.02em;
   }
 
   .nav-links {
@@ -82,30 +83,25 @@
     list-style: none;
     gap: 2rem;
   }
-
   .nav-links a {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--primary);
-    transition: color var(--transition);
+    color: var(--text);
+    transition: color 0.2s;
   }
-
-  .nav-links a:hover { color: var(--cta); }
+  .nav-links a:hover { color: var(--primary); }
 
   .nav-cta {
     background: var(--cta);
     color: #fff !important;
     padding: 0.5rem 1.2rem;
     border-radius: var(--radius);
-    transition: background var(--transition), transform var(--transition);
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
   }
-
-  .nav-cta:hover {
-    background: #a93226 !important;
-    transform: translateY(-1px);
-  }
+  .nav-cta:hover { background: #a8431f; transform: translateY(-1px); }
 
   .hamburger {
     display: flex;
@@ -114,965 +110,783 @@
     cursor: pointer;
     background: none;
     border: none;
-    padding: 5px;
+    padding: 4px;
   }
-
   .hamburger span {
     display: block;
-    width: 25px;
+    width: 24px;
     height: 2px;
-    background: var(--primary);
+    background: var(--text);
+    border-radius: 2px;
     transition: all 0.3s;
   }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
   .mobile-menu {
     display: none;
     position: fixed;
-    top: 70px; left: 0; right: 0;
+    top: 64px; left: 0; right: 0;
     background: var(--background);
-    border-bottom: 1px solid var(--secondary);
-    padding: 1.5rem 5%;
-    z-index: 999;
-    flex-direction: column;
-    gap: 1rem;
+    z-index: 99;
+    padding: 1.5rem 2rem 2rem;
+    border-bottom: 1px solid rgba(196,85,45,0.12);
+    box-shadow: 0 8px 30px rgba(62,44,35,0.10);
   }
-
-  .mobile-menu.open { display: flex; }
-
+  .mobile-menu.open { display: block; }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
   .mobile-menu a {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(232, 213, 183, 0.3);
-    color: var(--primary);
+    color: var(--text);
+  }
+  .mobile-menu a:hover { color: var(--primary); }
+  .mobile-menu .mob-cta {
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--cta);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
   }
 
-  @media (min-width: 768px) {
+  @media(min-width: 768px) {
     .nav-links { display: flex; }
     .hamburger { display: none; }
   }
 
-  /* BUTTONS */
-  .btn-primary {
+  /* ── BUTTONS ── */
+  .btn {
     display: inline-block;
-    background: var(--cta);
-    color: #fff;
-    padding: 0.9rem 2rem;
+    padding: 0.85rem 2rem;
     border-radius: var(--radius);
     font-family: var(--font-body);
-    font-size: 0.9rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
     cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     border: none;
   }
-
-  .btn-primary:hover {
-    background: #a93226;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(192, 57, 43, 0.3);
-  }
-
-  .btn-secondary {
-    display: inline-block;
-    background: transparent;
-    color: var(--primary);
-    padding: 0.9rem 2rem;
-    border-radius: var(--radius);
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    border: 2px solid var(--primary);
-    transition: all var(--transition);
-    cursor: pointer;
-  }
-
-  .btn-secondary:hover {
-    background: var(--primary);
-    color: #fff;
-    transform: translateY(-2px);
-  }
-
-  /* SECTION COMMON */
-  section { padding: 5rem 5%; }
-
-  .section-label {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--cta);
-    margin-bottom: 0.8rem;
-  }
-
-  .section-title {
-    font-family: var(--font-heading);
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    color: var(--primary);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-  }
-
-  .section-divider {
-    width: 50px;
-    height: 3px;
+  .btn-primary {
     background: var(--cta);
-    margin-bottom: 2rem;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(196,85,45,0.30);
+  }
+  .btn-primary:hover { background: #a8431f; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,85,45,0.35); }
+  .btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.7);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+  /* ── SECTION WRAPPER ── */
+  section { padding: 5rem 1.5rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1.5rem;
+  }
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: #6b5347;
+    max-width: 600px;
+    margin-bottom: 3rem;
   }
 
-  /* HERO */
+  /* ── HERO ── */
   #hero {
-    min-height: 100vh;
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: center;
+    text-align: center;
     overflow: hidden;
     padding: 0;
   }
-
   .hero-bg {
     position: absolute;
     inset: 0;
     background-image: url('assets/hero.jpg');
     background-size: cover;
     background-position: center;
-    z-index: 0;
+    transform: scale(1.04);
+    transition: transform 8s ease;
   }
-
+  #hero.loaded .hero-bg { transform: scale(1); }
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(44, 62, 80, 0.82) 0%, rgba(44, 62, 80, 0.5) 60%, rgba(44, 62, 80, 0.1) 100%);
-    z-index: 1;
+    background: linear-gradient(160deg, rgba(62,44,35,0.55) 0%, rgba(62,44,35,0.35) 60%, rgba(196,85,45,0.18) 100%);
   }
-
   .hero-content {
     position: relative;
     z-index: 2;
-    padding: 8rem 5% 5rem;
-    max-width: 650px;
+    max-width: 700px;
+    padding: 2rem;
   }
-
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(232, 213, 183, 0.2);
-    border: 1px solid rgba(232, 213, 183, 0.5);
-    color: var(--secondary);
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 1px;
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
     margin-bottom: 1.5rem;
   }
-
   .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-size: clamp(3.5rem, 10vw, 7rem);
     color: #fff;
-    line-height: 1.15;
-    margin-bottom: 1.2rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 20px rgba(62,44,35,0.3);
   }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--secondary);
-  }
-
   .hero-subtitle {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 2rem;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: rgba(255,255,255,0.88);
     font-weight: 300;
-    max-width: 480px;
-  }
-
-  .hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    letter-spacing: 0.06em;
     margin-bottom: 2.5rem;
   }
-
-  .hero-btn-primary {
-    background: var(--cta);
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: var(--radius);
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all var(--transition);
-    border: 2px solid var(--cta);
-  }
-
-  .hero-btn-primary:hover {
-    background: #a93226;
-    border-color: #a93226;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(192, 57, 43, 0.4);
-  }
-
-  .hero-btn-secondary {
-    background: transparent;
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: var(--radius);
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    border: 2px solid rgba(255,255,255,0.6);
-    transition: all var(--transition);
-  }
-
-  .hero-btn-secondary:hover {
-    background: rgba(255,255,255,0.15);
-    border-color: #fff;
-    transform: translateY(-2px);
-  }
-
-  .hero-stats {
+  .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
     display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .hero-stat {
-    text-align: left;
-  }
-
-  .hero-stat-number {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    color: var(--secondary);
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  .hero-stat-label {
-    font-size: 0.75rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
     color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 0.2rem;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll svg { width: 20px; height: 20px; }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
   }
 
-  /* ABOUT / PRESENTATION */
+  /* ── ABOUT / PRESENTATION ── */
   #presentation {
     background: #fff;
   }
-
-  .presentation-inner {
-    max-width: 1100px;
-    margin: 0 auto;
+  .presentation-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
     align-items: center;
   }
-
-  .presentation-image {
+  .presentation-img-wrap {
+    position: relative;
     border-radius: var(--radius);
-    overflow: hidden;
-    aspect-ratio: 4/3;
-    box-shadow: 0 20px 60px rgba(44, 62, 80, 0.12);
+    overflow: visible;
   }
-
-  .presentation-image img {
+  /* corner_frame decoration */
+  .corner-frame {
+    position: relative;
+    display: inline-block;
     width: 100%;
-    height: 100%;
+  }
+  .corner-frame img {
+    border-radius: var(--radius);
+    width: 100%;
+    height: 380px;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    box-shadow: var(--shadow-soft);
+    display: block;
   }
-
-  .presentation-image:hover img { transform: scale(1.03); }
-
-  .presentation-text p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.9;
-    margin-bottom: 1.5rem;
+  .corner-frame::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    width: 80px;
+    height: 80px;
+    border-top: 3px solid var(--primary);
+    border-left: 3px solid var(--primary);
+    border-radius: 4px 0 0 0;
+    z-index: 2;
   }
-
-  .presentation-highlights {
+  .corner-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    width: 80px;
+    height: 80px;
+    border-bottom: 3px solid var(--secondary);
+    border-right: 3px solid var(--secondary);
+    border-radius: 0 0 4px 0;
+    z-index: 2;
+  }
+  .presentation-text .section-subtitle { margin-bottom: 1.5rem; }
+  .presentation-stats {
     display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1.5rem;
   }
-
-  .highlight-chip {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--secondary);
+  .stat {
+    text-align: center;
+  }
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
     color: var(--primary);
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.82rem;
+    color: #6b5347;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
-  .highlight-chip::before {
-    content: '✓';
-    color: var(--cta);
-    font-weight: 700;
+  @media(min-width: 768px) {
+    .presentation-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  @media (min-width: 768px) {
-    .presentation-inner {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  /* SERVICES */
-  #services-vedettes {
+  /* ── SERVICES ── */
+  #services-populaires {
     background: var(--background);
   }
-
-  .services-header {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 3rem;
-  }
-
-  .services-header .section-divider {
-    margin: 0 auto 2rem;
-  }
-
   .services-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
   }
-
   .service-card {
     background: #fff;
     border-radius: var(--radius);
-    padding: 2.5rem 2rem;
-    box-shadow: 0 4px 20px rgba(44, 62, 80, 0.06);
-    transition: transform var(--transition), box-shadow var(--transition);
-    border-top: 4px solid transparent;
+    padding: 2rem;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
   }
-
   .service-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: var(--cta);
-    transform: scaleX(0);
-    transition: transform var(--transition);
-    transform-origin: left;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 4px 0 0 4px;
   }
-
-  .service-card:hover::before { transform: scaleX(1); }
-
-  .service-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 40px rgba(44, 62, 80, 0.12);
-  }
-
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 50px rgba(62,44,35,0.13); }
   .service-icon {
-    width: 56px;
-    height: 56px;
-    background: var(--secondary);
+    width: 48px;
+    height: 48px;
+    background: rgba(196,85,45,0.10);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+  .service-name {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .service-desc {
+    font-size: 0.95rem;
+    color: #6b5347;
+    line-height: 1.6;
   }
 
-  .service-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.8rem;
-    color: var(--primary);
+  @media(min-width: 768px) {
+    .services-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media(min-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(4, 1fr); }
   }
 
-  .service-card p {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.7;
-  }
-
-  @media (min-width: 768px) {
-    .services-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  /* REVIEWS */
+  /* ── REVIEWS ── */
   #avis-clients {
-    background: var(--primary);
-    color: #fff;
+    background: #fff;
   }
-
   .reviews-header {
     text-align: center;
     margin-bottom: 3rem;
   }
-
-  .reviews-header .section-label { color: var(--secondary); }
-
-  .reviews-header .section-title { color: #fff; }
-
-  .reviews-header .section-divider { margin: 0 auto 1.5rem; background: var(--secondary); }
-
-  .reviews-rating-summary {
-    display: flex;
+  .overall-rating {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
+    gap: 0.75rem;
+    background: var(--background);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    margin-bottom: 2rem;
   }
-
-  .reviews-big-rating {
+  .overall-score {
     font-family: var(--font-heading);
-    font-size: 3rem;
-    color: var(--secondary);
-    font-weight: 700;
-    line-height: 1;
+    font-size: 2rem;
+    color: var(--primary);
   }
-
-  .reviews-stars-big {
-    display: flex;
-    gap: 3px;
-  }
-
-  .star-big {
-    color: #F1C40F;
-    font-size: 1.5rem;
-  }
-
-  .reviews-count {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.6);
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
+  .stars-row { display: flex; gap: 3px; }
+  .star { color: #F5A623; font-size: 1.1rem; }
+  .star.empty { color: #ddd; }
+  .overall-count { font-size: 0.85rem; color: #6b5347; }
 
   .reviews-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    max-width: 900px;
-    margin: 0 auto;
+    gap: 2rem;
   }
-
   .review-card {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(232, 213, 183, 0.2);
+    background: var(--background);
     border-radius: var(--radius);
-    padding: 2rem;
-    transition: background var(--transition);
+    padding: 2.5rem 2rem 2rem;
+    box-shadow: var(--shadow-soft);
+    position: relative;
   }
-
-  .review-card:hover {
-    background: rgba(255,255,255,0.12);
+  /* big_quote style */
+  .review-card::before {
+    content: '\201C';
+    font-family: var(--font-heading);
+    font-size: 6rem;
+    color: var(--primary);
+    opacity: 0.18;
+    position: absolute;
+    top: -0.5rem;
+    left: 1.2rem;
+    line-height: 1;
+    pointer-events: none;
   }
-
-  .review-stars {
-    display: flex;
-    gap: 3px;
-    margin-bottom: 1rem;
-  }
-
-  .star { color: #F1C40F; font-size: 1rem; }
-
+  .review-stars { display: flex; gap: 3px; margin-bottom: 1rem; }
   .review-text {
-    font-size: 0.95rem;
-    color: rgba(255,255,255,0.9);
-    line-height: 1.8;
+    font-size: 0.97rem;
+    color: var(--text);
+    line-height: 1.7;
     font-style: italic;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
     white-space: pre-line;
   }
-
-  .review-text::before { content: '\201C'; }
-  .review-text::after { content: '\201D'; }
-
   .review-author {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.75rem;
   }
-
-  .review-avatar {
-    width: 40px;
-    height: 40px;
+  .author-avatar {
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background: var(--secondary);
+    background: var(--primary);
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
-    font-size: 1rem;
-    color: var(--primary);
-    font-weight: 700;
+    font-size: 1.1rem;
     flex-shrink: 0;
   }
-
-  .review-author-info strong {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--secondary);
+  .author-name {
     font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  .author-date {
+    font-size: 0.8rem;
+    color: #9b7b6a;
   }
 
-  .review-author-info span {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.5);
+  @media(min-width: 768px) {
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  @media (min-width: 768px) {
-    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  /* GALLERY */
+  /* ── GALLERY ── */
   #galerie {
-    background: #fff;
+    background: var(--background);
+    overflow: hidden;
   }
-
-  .gallery-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
+  .gallery-header { text-align: center; margin-bottom: 2.5rem; }
+  /* carousel style */
+  .carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
   }
-
-  .gallery-header .section-divider { margin: 0 auto 2rem; }
-
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    max-width: 1100px;
-    margin: 0 auto 2rem;
+  .carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    will-change: transform;
   }
-
-  .gallery-item {
+  .carousel-slide {
+    flex: 0 0 calc(100% - 0px);
+    position: relative;
     border-radius: var(--radius);
     overflow: hidden;
-    aspect-ratio: 1;
-    position: relative;
-    cursor: pointer;
   }
-
-  .gallery-item:first-child {
-    grid-column: 1 / -1;
-    aspect-ratio: 16/7;
-  }
-
-  .gallery-item img {
+  .carousel-slide img {
     width: 100%;
-    height: 100%;
+    height: 420px;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    border-radius: var(--radius);
+    display: block;
   }
-
-  .gallery-item:hover img { transform: scale(1.05); }
-
-  .gallery-item-overlay {
+  /* corner_frame on gallery images */
+  .carousel-slide .cf-wrap {
+    position: relative;
+    display: block;
+  }
+  .carousel-slide .cf-wrap::before {
+    content: '';
     position: absolute;
-    inset: 0;
-    background: rgba(44, 62, 80, 0);
-    transition: background var(--transition);
+    top: 12px; left: 12px;
+    width: 60px; height: 60px;
+    border-top: 3px solid rgba(255,255,255,0.7);
+    border-left: 3px solid rgba(255,255,255,0.7);
+    border-radius: 4px 0 0 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .carousel-slide .cf-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 12px; right: 12px;
+    width: 60px; height: 60px;
+    border-bottom: 3px solid rgba(255,255,255,0.7);
+    border-right: 3px solid rgba(255,255,255,0.7);
+    border-radius: 0 0 4px 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .carousel-controls {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: center;
-  }
-
-  .gallery-item:hover .gallery-item-overlay {
-    background: rgba(44, 62, 80, 0.3);
-  }
-
-  .gallery-center {
-    text-align: center;
-  }
-
-  @media (min-width: 768px) {
-    .gallery-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .gallery-item:first-child {
-      grid-column: 1 / 3;
-      aspect-ratio: 4/3;
-    }
-  }
-
-  /* TEAM */
-  #equipe {
-    background: var(--background);
-  }
-
-  .equipe-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .equipe-text {
-    font-size: 1.05rem;
-    color: #666;
-    line-height: 1.9;
-    max-width: 600px;
-    margin: 0 auto 2rem;
-  }
-
-  .equipe-values {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
-
-  .equipe-value {
+  .carousel-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
     background: #fff;
-    border: 1px solid var(--secondary);
-    border-radius: 50px;
-    padding: 0.6rem 1.4rem;
-    font-size: 0.85rem;
-    font-weight: 500;
     color: var(--primary);
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    font-size: 1.1rem;
+  }
+  .carousel-btn:hover { background: var(--primary); color: #fff; }
+  .carousel-dots { display: flex; gap: 8px; }
+  .carousel-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(196,85,45,0.25);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+  }
+  .carousel-dot.active { background: var(--primary); transform: scale(1.3); }
+
+  @media(min-width: 768px) {
+    .carousel-slide { flex: 0 0 calc(50% - 0.75rem); }
   }
 
-  /* CONTACT & HOURS */
-  #contact {
+  /* ── HOURS & LOCATION ── */
+  #hours-location {
     background: #fff;
   }
-
-  .contact-inner {
-    max-width: 1100px;
-    margin: 0 auto;
+  .hl-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-
-  .contact-info h2 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    margin-bottom: 0.5rem;
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
   }
-
-  .contact-details {
-    margin: 1.5rem 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  .hours-table tr {
+    border-bottom: 1px solid rgba(62,44,35,0.08);
   }
-
-  .contact-detail {
+  .hours-table tr:last-child { border-bottom: none; }
+  .hours-table td {
+    padding: 0.75rem 0;
+    font-size: 0.95rem;
+  }
+  .hours-table td:first-child {
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--text);
+    width: 45%;
+  }
+  .hours-table td:last-child { color: #6b5347; }
+  .hours-table tr.today td { color: var(--primary); }
+  .hours-table tr.today td:first-child::after {
+    content: ' ●';
+    color: var(--secondary);
+    font-size: 0.6rem;
+    vertical-align: middle;
+  }
+  .closed-text { color: #b0a09a !important; font-style: italic; }
+  .map-embed {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    height: 320px;
+  }
+  .map-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .address-block {
+    margin-top: 1.5rem;
     display: flex;
     align-items: flex-start;
-    gap: 0.8rem;
-    font-size: 0.9rem;
-    color: #555;
+    gap: 0.75rem;
   }
-
-  .contact-detail-icon {
-    width: 36px;
-    height: 36px;
-    background: var(--secondary);
+  .address-icon {
+    width: 36px; height: 36px;
+    background: rgba(196,85,45,0.10);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
     flex-shrink: 0;
-    margin-top: -2px;
-  }
-
-  .contact-detail strong {
-    display: block;
     color: var(--primary);
-    font-weight: 600;
-    margin-bottom: 0.2rem;
+    font-size: 1rem;
+  }
+  .address-text { font-size: 0.95rem; color: #6b5347; line-height: 1.5; }
+  .address-text strong { color: var(--text); display: block; margin-bottom: 0.2rem; }
+
+  @media(min-width: 768px) {
+    .hl-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  .hours-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-    font-size: 0.88rem;
+  /* ── CONTACT FORM ── */
+  #contact-form {
+    background: var(--background);
   }
-
-  .hours-table tr {
-    border-bottom: 1px solid rgba(232, 213, 183, 0.4);
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
-
-  .hours-table tr:last-child { border-bottom: none; }
-
-  .hours-table td {
-    padding: 0.7rem 0.5rem;
-    color: #555;
-  }
-
-  .hours-table td:first-child {
-    font-weight: 600;
-    color: var(--primary);
-    text-transform: capitalize;
-    width: 45%;
-  }
-
-  .hours-table .closed {
-    color: var(--cta);
-    font-style: italic;
-  }
-
-  .hours-table tr.today td {
-    color: var(--cta);
-    font-weight: 600;
-  }
-
-  .map-container {
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(44, 62, 80, 0.1);
-    margin-top: 1.5rem;
-  }
-
-  .map-container iframe {
-    width: 100%;
-    height: 280px;
-    border: none;
-    display: block;
-  }
-
-  .contact-form-section h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .contact-form-section p {
-    font-size: 0.9rem;
-    color: #666;
+  .contact-info-block { }
+  .contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
     margin-bottom: 1.5rem;
   }
-
-  .form-group {
-    margin-bottom: 1.2rem;
-  }
-
-  .form-group label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+  .ci-icon {
+    width: 44px; height: 44px;
+    background: rgba(196,85,45,0.10);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--primary);
-    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+    flex-shrink: 0;
   }
+  .ci-label { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--secondary); margin-bottom: 0.2rem; }
+  .ci-value { font-size: 0.97rem; color: var(--text); }
 
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    border: 1.5px solid rgba(232, 213, 183, 0.6);
+  .form-card {
+    background: #fff;
     border-radius: var(--radius);
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--text);
-    background: var(--background);
-    transition: border-color var(--transition), box-shadow var(--transition);
-    outline: none;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-soft);
   }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--cta);
-    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
-  }
-
-  .form-group textarea { resize: vertical; min-height: 120px; }
-
   .form-row {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    margin-bottom: 1rem;
   }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.03em;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--background);
+    border: 1.5px solid rgba(62,44,35,0.15);
+    border-radius: calc(var(--radius) - 4px);
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(196,85,45,0.12);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-submit { margin-top: 1.5rem; width: 100%; text-align: center; }
+  .form-submit .btn { width: 100%; justify-content: center; }
 
-  @media (min-width: 768px) {
-    .contact-inner { grid-template-columns: 1fr 1fr; }
+  @media(min-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr 1.4fr; }
     .form-row { grid-template-columns: 1fr 1fr; }
   }
 
-  /* TRUST SIGNALS */
-  #trust {
-    background: var(--secondary);
-    padding: 3rem 5%;
-  }
-
-  .trust-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: rgba(255,255,255,0.5);
-    border-radius: var(--radius);
-    padding: 1.2rem;
-  }
-
-  .trust-icon {
-    font-size: 1.8rem;
-    flex-shrink: 0;
-  }
-
-  .trust-item strong {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 0.2rem;
-  }
-
-  .trust-item span {
-    font-size: 0.78rem;
-    color: #666;
-  }
-
-  @media (min-width: 768px) {
-    .trust-inner { grid-template-columns: repeat(5, 1fr); }
-  }
-
-  /* FOOTER */
-  footer {
+  /* ── TRUST SIGNALS ── */
+  #trust-signals {
     background: var(--primary);
-    color: rgba(255,255,255,0.8);
-    padding: 3rem 5% 1.5rem;
+    padding: 4rem 1.5rem;
+  }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .trust-item {
+    text-align: center;
+    color: #fff;
+  }
+  .trust-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .trust-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    color: #fff;
+  }
+  .trust-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.5;
   }
 
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
+  @media(min-width: 768px) {
+    .trust-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* ── CONTACT CTA BANNER ── */
+  #contact-cta {
+    background: linear-gradient(135deg, var(--secondary) 0%, #5a6b42 100%);
+    padding: 5rem 1.5rem;
+    text-align: center;
+  }
+  #contact-cta h2 {
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  #contact-cta p {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #contact-cta .btn-primary {
+    background: #fff;
+    color: var(--secondary);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  #contact-cta .btn-primary:hover { background: var(--background); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.75);
+    padding: 3rem 1.5rem 2rem;
+  }
+  .footer-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    margin-bottom: 2rem;
+    max-width: 1100px;
+    margin: 0 auto 2.5rem;
   }
-
-  .footer-brand .nav-logo {
-    color: #fff;
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  .footer-brand p {
-    font-size: 0.85rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.6);
-  }
-
+  .footer-brand .nav-logo { color: #fff; display: block; margin-bottom: 0.75rem; }
+  .footer-brand p { font-size: 0.9rem; line-height: 1.6; }
   .footer-col h4 {
     font-family: var(--font-heading);
+    color: #fff;
     font-size: 1.1rem;
-    color: var(--secondary);
     margin-bottom: 1rem;
   }
-
-  .footer-col ul {
-    list-style: none;
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-col ul li a { font-size: 0.9rem; color: rgba(255,255,255,0.65); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: #fff; }
+  .footer-col p { font-size: 0.9rem; line-height: 1.7; }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.10);
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-  }
-
-  .footer-col ul li a {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.6);
-    transition: color var(--transition);
-  }
-
-  .footer-col ul li a:hover { color: var(--secondary); }
-
-  .footer-col address {
-    font-style: normal;
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.8;
-  }
-
-  .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 1.5rem;
-    text-align: center;
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.4);
-  }
-
-  @media (min-width: 768px) {
-    .footer-inner { grid-template-columns: 2fr 1fr 1fr; }
-  }
-
-  /* SCROLL TO TOP */
-  .scroll-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 44px;
-    height: 44px;
-    background: var(--cta);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity var(--transition), transform var(--transition);
-    z-index: 999;
-    box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4);
+    text-align: center;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
   }
 
-  .scroll-top.visible {
-    opacity: 1;
-    pointer-events: all;
+  @media(min-width: 768px) {
+    .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+    .footer-bottom { flex-direction: row; justify-content: space-between; }
   }
-
-  .scroll-top:hover { transform: translateY(-3px); }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="#hero" class="nav-logo">La <span>Kage</span></a>
+<nav id="navbar">
+  <span class="nav-logo">La Kage</span>
   <ul class="nav-links">
     <li><a href="#presentation">À propos</a></li>
-    <li><a href="#services-vedettes">Services</a></li>
+    <li><a href="#services-populaires">Services</a></li>
     <li><a href="#avis-clients">Avis</a></li>
     <li><a href="#galerie">Galerie</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#contact" class="nav-cta">Réserver</a></li>
+    <li><a href="#hours-location">Horaires</a></li>
+    <li><a href="#contact-form" class="nav-cta">Rendez-vous</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -1080,144 +894,136 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#presentation" onclick="closeMobile()">À propos</a>
-  <a href="#services-vedettes" onclick="closeMobile()">Services</a>
-  <a href="#avis-clients" onclick="closeMobile()">Avis clients</a>
-  <a href="#galerie" onclick="closeMobile()">Galerie</a>
-  <a href="#contact" onclick="closeMobile()">Contact & Horaires</a>
-  <a href="#contact" onclick="closeMobile()" style="color: var(--cta); font-weight: 700;">Réserver maintenant</a>
+  <ul>
+    <li><a href="#presentation" class="mob-link">À propos</a></li>
+    <li><a href="#services-populaires" class="mob-link">Services</a></li>
+    <li><a href="#avis-clients" class="mob-link">Avis clients</a></li>
+    <li><a href="#galerie" class="mob-link">Galerie</a></li>
+    <li><a href="#hours-location" class="mob-link">Horaires</a></li>
+    <li><a href="#contact-form" class="mob-link">Contact</a></li>
+  </ul>
+  <a href="#contact-form" class="mob-cta mob-link">Prendre rendez-vous</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="hero-content fade-in">
-    <div class="hero-badge">✂ Salon de coiffure & beauté · Nantes</div>
-    <h1 class="hero-title">La Kage –<br><em>L'art de la coiffure</em><br>à Nantes</h1>
-    <p class="hero-subtitle">Salon de coiffure et beauté au 1 Rue Yves Bodiguel, 44000 Nantes</p>
+  <div class="hero-content">
+    <div class="hero-badge">Salon de coiffure & beauté · Nantes</div>
+    <h1 class="hero-title">La Kage</h1>
+    <p class="hero-subtitle">Salon de coiffure & beauté à Nantes</p>
     <div class="hero-buttons">
-      <a href="#contact" class="hero-btn-primary">Prendre rendez-vous</a>
-      <a href="#services-vedettes" class="hero-btn-secondary">Découvrir nos services</a>
+      <a href="#contact-form" class="btn btn-primary">Prendre rendez-vous</a>
+      <a href="#services-populaires" class="btn btn-secondary">Découvrir nos services</a>
     </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-number">4,7/5</div>
-        <div class="hero-stat-label">Note moyenne</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-number">338+</div>
-        <div class="hero-stat-label">Avis clients</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-number">★★★★★</div>
-        <div class="hero-stat-label">Google Reviews</div>
-      </div>
-    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </div>
 </section>
 
 <!-- PRESENTATION -->
 <section id="presentation">
-  <div class="presentation-inner">
-    <div class="presentation-image fade-in">
-      <img src="assets/gallery-1.jpg" alt="Intérieur du salon La Kage à Nantes">
-    </div>
-    <div class="presentation-text fade-in">
-      <p class="section-label">Notre histoire</p>
-      <h2 class="section-title">Bienvenue chez La Kage</h2>
-      <div class="section-divider"></div>
-      <p>Situé au cœur de Nantes, La Kage est bien plus qu'un salon de coiffure : c'est un véritable espace d'artistes. Notre équipe de coiffeurs et coiffeuses talentueux vous accueille dans une ambiance chaleureuse et musicale, pour des coupes qui vous ressemblent.</p>
-      <p>Avec une note moyenne de 4,7/5 et plus de 338 avis clients, nous mettons un point d'honneur à offrir un service irréprochable et des prix abordables. Venez vivre l'expérience La Kage !</p>
-      <div class="presentation-highlights">
-        <span class="highlight-chip">Coiffeurs talentueux</span>
-        <span class="highlight-chip">Ambiance musicale</span>
-        <span class="highlight-chip">Prix abordables</span>
-        <span class="highlight-chip">4,7/5 sur Google</span>
+  <div class="container">
+    <div class="presentation-grid">
+      <div class="presentation-img-wrap fade-in">
+        <div class="corner-frame">
+          <img src="assets/gallery-1.jpg" alt="Intérieur du salon La Kage à Nantes" loading="lazy">
+        </div>
+      </div>
+      <div class="presentation-text fade-in">
+        <span class="section-label">Notre histoire</span>
+        <h2 class="section-title">Votre salon de coiffure au cœur de Nantes</h2>
+        <p class="section-subtitle">Situé au 1 Rue Yves Bodiguel, 44000 Nantes, La Kage est bien plus qu'un salon de coiffure : c'est un lieu où l'art de la coupe rencontre une ambiance musicale soignée. Notre équipe de coiffeurs et coiffeuses talentueux vous accueille dans une atmosphère chaleureuse et professionnelle. Que vous souhaitiez une coupe classique, une coloration ou un style audacieux, nous mettons notre savoir-faire à votre service pour révéler votre beauté.</p>
+        <a href="#contact-form" class="btn btn-primary">Prendre rendez-vous</a>
+        <div class="presentation-stats">
+          <div class="stat">
+            <span class="stat-number">4,7</span>
+            <span class="stat-label">Note Google</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">338</span>
+            <span class="stat-label">Avis clients</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES VEDETTES -->
-<section id="services-vedettes">
-  <div class="services-header fade-in">
-    <p class="section-label">Ce que nous faisons</p>
-    <h2 class="section-title">Nos services</h2>
-    <div class="section-divider"></div>
-  </div>
-  <div class="services-grid">
-    <div class="service-card fade-in">
-      <div class="service-icon">✂</div>
-      <h3>Coupe & Coiffage</h3>
-      <p>Des coupes réalisées par des coiffeurs de talent, adaptées à votre style et à votre personnalité.</p>
+<!-- SERVICES POPULAIRES -->
+<section id="services-populaires">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:3rem;" class="fade-in">
+      <span class="section-label">Ce que nous faisons</span>
+      <h2 class="section-title">Nos services populaires</h2>
     </div>
-    <div class="service-card fade-in">
-      <div class="service-icon">🎨</div>
-      <h3>Coloration & Soins</h3>
-      <p>Des soins et colorations pour sublimer votre chevelure, avec des produits de qualité.</p>
-    </div>
-    <div class="service-card fade-in">
-      <div class="service-icon">✨</div>
-      <h3>Beauté & Bien-Être</h3>
-      <p>Des prestations beauté pour un moment de détente et de mise en beauté complète.</p>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">✂️</div>
+        <h3 class="service-name">Coupe femme</h3>
+        <p class="service-desc">Coupe personnalisée avec diagnostic et conseils adaptés à votre morphologie et à vos envies.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">💈</div>
+        <h3 class="service-name">Coupe homme</h3>
+        <p class="service-desc">Coupe moderne et précise, réalisée selon vos préférences.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🎨</div>
+        <h3 class="service-name">Coloration</h3>
+        <p class="service-desc">Coloration, balayage, ou autres techniques pour sublimer votre chevelure.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">💨</div>
+        <h3 class="service-name">Brushing</h3>
+        <p class="service-desc">Brushing professionnel pour un résultat impeccable.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- AVIS CLIENTS -->
 <section id="avis-clients">
-  <div class="reviews-header fade-in">
-    <p class="section-label">Témoignages</p>
-    <h2 class="section-title">Ils nous font confiance</h2>
-    <div class="section-divider"></div>
-    <div class="reviews-rating-summary">
-      <span class="reviews-big-rating">4,7</span>
-      <div>
-        <div class="reviews-stars-big">
-          <span class="star-big">★</span>
-          <span class="star-big">★</span>
-          <span class="star-big">★</span>
-          <span class="star-big">★</span>
-          <span class="star-big">★</span>
+  <div class="container">
+    <div class="reviews-header fade-in">
+      <span class="section-label">Témoignages</span>
+      <h2 class="section-title">Ils nous font confiance</h2>
+      <div class="overall-rating">
+        <span class="overall-score">4,7</span>
+        <div class="stars-row">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
+        <span class="overall-count">Note moyenne basée sur 338 avis</span>
       </div>
     </div>
-    <p class="reviews-count">Basé sur 338 avis Google</p>
-  </div>
-  <div class="reviews-grid">
-    <div class="review-card fade-in">
-      <div class="review-stars">
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-      </div>
-      <p class="review-text">Un salon de coiffure exceptionnel avec un accueil irréprochable et une ambiance musicale de choix !
-Les coupes y sont réalisées par des coiffeurs-coiffeuses de talents !  Je quitte toujours ce salon d'artistes avec le sourire !</p>
-      <div class="review-author">
-        <div class="review-avatar">S</div>
-        <div class="review-author-info">
-          <strong>Sophie PASSEMARD</strong>
-          <span>il y a 2&nbsp;semaines</span>
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">« Un salon de coiffure exceptionnel avec un accueil irréprochable et une ambiance musicale de choix !
+Les coupes y sont réalisées par des coiffeurs-coiffeuses de talents !  Je quitte toujours ce salon d'artistes avec le sourire ! »</p>
+        <div class="review-author">
+          <div class="author-avatar">S</div>
+          <div>
+            <div class="author-name">Sophie PASSEMARD</div>
+            <div class="author-date">il y a 2&nbsp;semaines</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="review-card fade-in">
-      <div class="review-stars">
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-      </div>
-      <p class="review-text">J'ai passé un excellent moment, la coupe qu'on m'a réalisée est juste parfaite, je suis vraiment très contente! En plus les prix sont vraiment très abordables, je recommande à 100%</p>
-      <div class="review-author">
-        <div class="review-avatar">C</div>
-        <div class="review-author-info">
-          <strong>Camille Zubialde</strong>
-          <span>il y a 2&nbsp;semaines</span>
+      <div class="review-card fade-in">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">« J'ai passé un excellent moment, la coupe qu'on m'a réalisée est juste parfaite, je suis vraiment très contente! En plus les prix sont vraiment très abordables, je recommande à 100% »</p>
+        <div class="review-author">
+          <div class="author-avatar">C</div>
+          <div>
+            <div class="author-name">Camille Zubialde</div>
+            <div class="author-date">il y a 2&nbsp;semaines</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1226,291 +1032,325 @@ Les coupes y sont réalisées par des coiffeurs-coiffeuses de talents !  Je quit
 
 <!-- GALERIE -->
 <section id="galerie">
-  <div class="gallery-header fade-in">
-    <p class="section-label">Galerie</p>
-    <h2 class="section-title">Notre univers</h2>
-    <div class="section-divider"></div>
-  </div>
-  <div class="gallery-grid">
-    <div class="gallery-item fade-in">
-      <img src="assets/hero.jpg" alt="Salon La Kage Nantes - ambiance">
-      <div class="gallery-item-overlay"></div>
+  <div class="container">
+    <div class="gallery-header fade-in">
+      <span class="section-label">Galerie</span>
+      <h2 class="section-title">Notre univers</h2>
     </div>
-    <div class="gallery-item fade-in">
-      <img src="assets/gallery-1.jpg" alt="Coiffure La Kage Nantes">
-      <div class="gallery-item-overlay"></div>
+    <div class="carousel-wrapper fade-in">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <div class="cf-wrap">
+            <img src="assets/hero.jpg" alt="Salon La Kage - ambiance" loading="lazy">
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="cf-wrap">
+            <img src="assets/gallery-1.jpg" alt="Salon La Kage - coiffure" loading="lazy">
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <div class="cf-wrap">
+            <img src="assets/gallery-2.jpg" alt="Salon La Kage - style" loading="lazy">
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-item fade-in">
-      <img src="assets/gallery-2.jpg" alt="Salon de beauté La Kage Nantes">
-      <div class="gallery-item-overlay"></div>
-    </div>
-  </div>
-  <div class="gallery-center fade-in">
-    <a href="#contact" class="btn-primary">Réserver maintenant</a>
-  </div>
-</section>
-
-<!-- EQUIPE -->
-<section id="equipe">
-  <div class="equipe-inner fade-in">
-    <p class="section-label">L'équipe</p>
-    <h2 class="section-title">Notre équipe</h2>
-    <div class="section-divider" style="margin: 0 auto 1.5rem;"></div>
-    <p class="equipe-text">Une équipe passionnée et créative, à l'écoute de vos envies pour vous offrir le meilleur de la coiffure.</p>
-    <div class="equipe-values">
-      <span class="equipe-value">🎵 Ambiance musicale</span>
-      <span class="equipe-value">🎨 Créativité</span>
-      <span class="equipe-value">💬 À votre écoute</span>
-      <span class="equipe-value">⭐ Excellence</span>
-      <span class="equipe-value">❤ Passion</span>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prevBtn" aria-label="Précédent">&#8592;</button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <button class="carousel-btn" id="nextBtn" aria-label="Suivant">&#8594;</button>
     </div>
   </div>
 </section>
 
-<!-- CONTACT & HORAIRES -->
-<section id="contact">
-  <div class="contact-inner">
-    <div class="contact-info fade-in">
-      <p class="section-label">Nous trouver</p>
-      <h2 class="section-title">Contact & Horaires</h2>
-      <div class="section-divider"></div>
-      <div class="contact-details">
-        <div class="contact-detail">
-          <div class="contact-detail-icon">📍</div>
-          <div>
+<!-- HOURS & LOCATION -->
+<section id="hours-location">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom:3rem;">
+      <span class="section-label">Nous trouver</span>
+      <h2 class="section-title">Horaires & Localisation</h2>
+    </div>
+    <div class="hl-grid">
+      <div class="fade-in">
+        <h3 style="font-family:var(--font-heading);font-size:1.4rem;margin-bottom:1.5rem;">Nos horaires</h3>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Lundi</td><td>10:00 – 17:00</td></tr>
+            <tr><td>Mardi</td><td>10:00 – 20:30</td></tr>
+            <tr><td>Mercredi</td><td>10:00 – 20:30</td></tr>
+            <tr><td>Jeudi</td><td>10:00 – 21:30</td></tr>
+            <tr><td>Vendredi</td><td>10:00 – 21:30</td></tr>
+            <tr><td>Samedi</td><td>09:00 – 16:00</td></tr>
+            <tr><td>Dimanche</td><td class="closed-text">Fermé</td></tr>
+          </tbody>
+        </table>
+        <div class="address-block" style="margin-top:2rem;">
+          <div class="address-icon">📍</div>
+          <div class="address-text">
             <strong>Adresse</strong>
             1 Rue Yves Bodiguel, 44000 Nantes, France
           </div>
         </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">✉</div>
-          <div>
+        <div class="address-block">
+          <div class="address-icon">✉️</div>
+          <div class="address-text">
             <strong>Email</strong>
-            <a href="mailto:lakage.contact@gmail.com" style="color: var(--cta);">lakage.contact@gmail.com</a>
+            <a href="mailto:lakage.contact@gmail.com" style="color:var(--primary);">lakage.contact@gmail.com</a>
           </div>
         </div>
       </div>
-      <h3 style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--primary);">Nos horaires</h3>
-      <table class="hours-table">
-        <tbody>
-          <tr>
-            <td>Lundi</td>
-            <td>10:00 – 17:00</td>
-          </tr>
-          <tr>
-            <td>Mardi</td>
-            <td>10:00 – 20:30</td>
-          </tr>
-          <tr>
-            <td>Mercredi</td>
-            <td>10:00 – 20:30</td>
-          </tr>
-          <tr>
-            <td>Jeudi</td>
-            <td>10:00 – 21:30</td>
-          </tr>
-          <tr>
-            <td>Vendredi</td>
-            <td>10:00 – 21:30</td>
-          </tr>
-          <tr>
-            <td>Samedi</td>
-            <td>09:00 – 16:00</td>
-          </tr>
-          <tr>
-            <td>Dimanche</td>
-            <td class="closed">Fermé</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="map-container" style="margin-top:1.5rem;">
-        <iframe
-          src="https://www.google.com/maps?q=1+Rue+Yves+Bodiguel,+44000+Nantes,+France&output=embed"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="La Kage - 1 Rue Yves Bodiguel, 44000 Nantes">
-        </iframe>
+      <div class="fade-in">
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps?q=1+Rue+Yves+Bodiguel,+44000+Nantes,+France&output=embed"
+            title="La Kage - 1 Rue Yves Bodiguel, 44000 Nantes"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
       </div>
     </div>
-    <div class="contact-form-section fade-in">
-      <p class="section-label">Nous écrire</p>
-      <h3 class="section-title" style="font-size:1.6rem;">Prendre rendez-vous</h3>
-      <p>Envoyez-nous un message et nous vous répondrons dans les plus brefs délais.</p>
-      <form action="#" method="POST">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact-form">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info-block fade-in">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Prenez rendez-vous</h2>
+        <p style="color:#6b5347;margin-bottom:2rem;font-size:0.97rem;">Remplissez le formulaire et nous vous recontacterons rapidement pour confirmer votre rendez-vous.</p>
+        <div class="contact-info-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Adresse</div>
+            <div class="ci-value">1 Rue Yves Bodiguel, 44000 Nantes, France</div>
           </div>
-          <div class="form-group">
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value"><a href="mailto:lakage.contact@gmail.com" style="color:var(--primary);">lakage.contact@gmail.com</a></div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+        <div class="contact-info-item">
+          <div class="ci-icon">⭐</div>
+          <div>
+            <div class="ci-label">Note Google</div>
+            <div class="ci-value">4,7/5 · 338 avis</div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="telephone">Téléphone</label>
-          <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00">
-        </div>
-        <div class="form-group">
-          <label for="service">Service souhaité</label>
-          <select id="service" name="service">
-            <option value="">Choisissez un service</option>
-            <option value="coupe">Coupe & Coiffage</option>
-            <option value="coloration">Coloration & Soins</option>
-            <option value="beaute">Beauté & Bien-Être</option>
-            <option value="autre">Autre</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Votre message, vos disponibilités..."></textarea>
-        </div>
-        <button type="submit" class="btn-primary" style="width:100%;">Envoyer ma demande</button>
-      </form>
+      </div>
+      <div class="form-card fade-in">
+        <form action="#" method="POST" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom *</label>
+              <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom *</label>
+              <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="telephone">Téléphone</label>
+              <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00">
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label for="service">Service souhaité</label>
+            <select id="service" name="service">
+              <option value="">Choisir un service…</option>
+              <option value="coupe-femme">Coupe femme</option>
+              <option value="coupe-homme">Coupe homme</option>
+              <option value="coloration">Coloration</option>
+              <option value="brushing">Brushing</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:1rem;">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Précisez vos souhaits, disponibilités…"></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- TRUST SIGNALS -->
-<section id="trust">
-  <div class="trust-inner">
-    <div class="trust-item fade-in">
-      <span class="trust-icon">⭐</span>
-      <div>
-        <strong>Avis Google 5 étoiles</strong>
-        <span>4,7/5 · 338 avis</span>
+<section id="trust-signals">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item fade-in">
+        <span class="trust-icon">⭐</span>
+        <div class="trust-title">Avis Google 5 étoiles</div>
+        <div class="trust-desc">4,7/5 basé sur 338 avis clients vérifiés</div>
       </div>
-    </div>
-    <div class="trust-item fade-in">
-      <span class="trust-icon">✂</span>
-      <div>
-        <strong>Coiffeurs expérimentés</strong>
-        <span>Artistes passionnés</span>
+      <div class="trust-item fade-in">
+        <span class="trust-icon">✂️</span>
+        <div class="trust-title">Coiffeurs expérimentés</div>
+        <div class="trust-desc">Une équipe talentueuse et passionnée à votre service</div>
       </div>
-    </div>
-    <div class="trust-item fade-in">
-      <span class="trust-icon">🌿</span>
-      <div>
-        <strong>Produits haut de gamme</strong>
-        <span>Certification bio</span>
+      <div class="trust-item fade-in">
+        <span class="trust-icon">🌿</span>
+        <div class="trust-title">Produits professionnels</div>
+        <div class="trust-desc">Produits de qualité professionnelle pour des résultats durables</div>
       </div>
-    </div>
-    <div class="trust-item fade-in">
-      <span class="trust-icon">🎵</span>
-      <div>
-        <strong>Ambiance conviviale</strong>
-        <span>Musicale & chaleureuse</span>
-      </div>
-    </div>
-    <div class="trust-item fade-in">
-      <span class="trust-icon">💰</span>
-      <div>
-        <strong>Prix abordables</strong>
-        <span>Qualité accessible</span>
+      <div class="trust-item fade-in">
+        <span class="trust-icon">🏅</span>
+        <div class="trust-title">Certification Qualité</div>
+        <div class="trust-desc">Engagement constant envers l'excellence et le savoir-faire</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CONTACT CTA -->
+<section id="contact-cta">
+  <div class="container fade-in">
+    <h2>Prêt(e) à révéler votre beauté ?</h2>
+    <p>Prenez rendez-vous dès maintenant et laissez-vous chouchouter par notre équipe au cœur de Nantes.</p>
+    <a href="#contact-form" class="btn btn-primary">Prendre rendez-vous</a>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
+  <div class="footer-grid">
     <div class="footer-brand">
-      <span class="nav-logo">La <span style="color:var(--secondary);">Kage</span></span>
-      <p>Salon de coiffure et beauté au cœur de Nantes. Un espace d'artistes où chaque coupe est une œuvre, dans une ambiance musicale et chaleureuse.</p>
+      <span class="nav-logo">La Kage</span>
+      <p>Salon de coiffure & beauté au cœur de Nantes. Art de la coupe, ambiance musicale et accueil chaleureux.</p>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
       <ul>
         <li><a href="#presentation">À propos</a></li>
-        <li><a href="#services-vedettes">Services</a></li>
+        <li><a href="#services-populaires">Services</a></li>
         <li><a href="#avis-clients">Avis clients</a></li>
         <li><a href="#galerie">Galerie</a></li>
-        <li><a href="#equipe">Notre équipe</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#hours-location">Horaires</a></li>
+        <li><a href="#contact-form">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Nous trouver</h4>
-      <address>
-        1 Rue Yves Bodiguel<br>
-        44000 Nantes, France<br><br>
-        <a href="mailto:lakage.contact@gmail.com" style="color:rgba(255,255,255,0.6); transition:color 0.3s;">lakage.contact@gmail.com</a>
-      </address>
+      <h4>Informations</h4>
+      <p>1 Rue Yves Bodiguel<br>44000 Nantes, France</p>
+      <p style="margin-top:0.75rem;"><a href="mailto:lakage.contact@gmail.com" style="color:rgba(255,255,255,0.65);">lakage.contact@gmail.com</a></p>
+      <p style="margin-top:0.75rem;font-size:0.85rem;color:rgba(255,255,255,0.5);">Lun–Ven : 10h–21h30<br>Sam : 09h–16h · Dim : Fermé</p>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2024 La Kage – Salon de coiffure & beauté à Nantes · Tous droits réservés</p>
+    <span>© 2025 La Kage · Salon de coiffure & beauté à Nantes</span>
+    <span>Tous droits réservés</span>
   </div>
 </footer>
 
-<!-- SCROLL TO TOP -->
-<button class="scroll-top" id="scrollTop" aria-label="Retour en haut">↑</button>
-
 <script>
-  // HAMBURGER MENU
+  // ── NAV SCROLL ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ── HERO ANIMATION ──
+  document.getElementById('hero').classList.add('loaded');
+
+  // ── HAMBURGER ──
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-
   hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
   });
-
-  function closeMobile() {
-    mobileMenu.classList.remove('open');
-  }
-
-  // SCROLL TO TOP
-  const scrollTopBtn = document.getElementById('scrollTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      scrollTopBtn.classList.add('visible');
-    } else {
-      scrollTopBtn.classList.remove('visible');
-    }
+  document.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
   });
 
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // INTERSECTION OBSERVER - FADE IN
+  // ── FADE-IN INTERSECTION OBSERVER ──
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
+  }, { threshold: 0.12 });
   fadeEls.forEach(el => observer.observe(el));
 
-  // HIGHLIGHT TODAY IN HOURS TABLE
-  const days = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-  const today = days[new Date().getDay()];
-  const rows = document.querySelectorAll('.hours-table tr');
-  rows.forEach(row => {
-    const dayCell = row.querySelector('td:first-child');
-    if (dayCell && dayCell.textContent.trim().toLowerCase() === today) {
-      row.classList.add('today');
+  // ── CAROUSEL ──
+  const track = document.getElementById('carouselTrack');
+  const slides = track.querySelectorAll('.carousel-slide');
+  const dotsContainer = document.getElementById('carouselDots');
+  let current = 0;
+  let slidesPerView = window.innerWidth >= 768 ? 2 : 1;
+  let maxIndex = Math.max(0, slides.length - slidesPerView);
+
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === current ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
     }
+  }
+
+  function goTo(index) {
+    current = Math.max(0, Math.min(index, maxIndex));
+    const slideWidth = slides[0].offsetWidth + 24; // gap = 1.5rem = 24px
+    track.style.transform = `translateX(-${current * slideWidth}px)`;
+    document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+
+  buildDots();
+
+  window.addEventListener('resize', () => {
+    slidesPerView = window.innerWidth >= 768 ? 2 : 1;
+    maxIndex = Math.max(0, slides.length - slidesPerView);
+    current = Math.min(current, maxIndex);
+    buildDots();
+    goTo(current);
   });
 
-  // NAV SCROLL EFFECT
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-      nav.style.boxShadow = '0 4px 20px rgba(44,62,80,0.1)';
-    } else {
-      nav.style.boxShadow = 'none';
-    }
+  // Auto-play
+  let autoPlay = setInterval(() => goTo(current < maxIndex ? current + 1 : 0), 4000);
+  track.parentElement.addEventListener('mouseenter', () => clearInterval(autoPlay));
+  track.parentElement.addEventListener('mouseleave', () => {
+    autoPlay = setInterval(() => goTo(current < maxIndex ? current + 1 : 0), 4000);
+  });
+
+  // Touch swipe
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
   });
 </script>
 </body>
