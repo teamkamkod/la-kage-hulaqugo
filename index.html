@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Kage | Salon de coiffure & beauté à Nantes</title>
-<meta name="description" content="La Kage, salon de coiffure et beauté à Nantes. Coupes tendance, ambiance musicale, accueil chaleureux. Prenez rendez-vous dès aujourd'hui !">
-<meta name="keywords" content="salon de coiffure Nantes, coiffeur Nantes centre, coloration Nantes, soin capillaire Nantes, salon de beauté Nantes">
+<meta name="description" content="La Kage, salon de coiffure et beauté à Nantes. Coupes tendance, ambiance musicale, accueil chaleureux. Horaires flexibles, avis 4,7/5. Prenez rendez-vous !">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -15,10 +14,10 @@
     --secondary: #E8D5B7;
     --background: #FDF8F5;
     --text: #2C3E50;
-    --cta: #C9A227;
+    --cta: #C0392B;
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Montserrat', sans-serif;
-    --radius: 6px;
+    --radius: 12px;
     --transition: 0.4s ease;
   }
 
@@ -30,21 +29,20 @@
     font-family: var(--font-body);
     background: var(--background);
     color: var(--text);
-    font-size: 16px;
     line-height: 1.7;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.3; }
-
-  a { color: inherit; text-decoration: none; }
+  h1, h2, h3, h4 { font-family: var(--font-heading); }
 
   img { max-width: 100%; display: block; }
+
+  a { text-decoration: none; color: inherit; }
 
   /* FADE-IN ANIMATION */
   .fade-in {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(30px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .fade-in.visible {
@@ -56,51 +54,58 @@
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 1000;
+    background: rgba(253, 248, 245, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(232, 213, 183, 0.4);
+    padding: 0 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 2rem;
-    background: rgba(253, 248, 245, 0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(232, 213, 183, 0.4);
-    transition: box-shadow 0.3s;
+    height: 70px;
   }
-  nav.scrolled { box-shadow: 0 2px 20px rgba(44,62,80,0.08); }
 
   .nav-logo {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--primary);
-    letter-spacing: 0.02em;
+    letter-spacing: 1px;
   }
-  .nav-logo span { color: var(--cta); }
+
+  .nav-logo span {
+    color: var(--cta);
+  }
 
   .nav-links {
     display: none;
     list-style: none;
     gap: 2rem;
-    align-items: center;
   }
+
   .nav-links a {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     color: var(--primary);
     transition: color var(--transition);
   }
+
   .nav-links a:hover { color: var(--cta); }
 
   .nav-cta {
     background: var(--cta);
     color: #fff !important;
-    padding: 0.55rem 1.3rem;
+    padding: 0.5rem 1.2rem;
     border-radius: var(--radius);
-    transition: background var(--transition), transform 0.2s !important;
+    transition: background var(--transition), transform var(--transition);
   }
-  .nav-cta:hover { background: #b08a1e !important; transform: translateY(-1px); }
+
+  .nav-cta:hover {
+    background: #a93226 !important;
+    transform: translateY(-1px);
+  }
 
   .hamburger {
     display: flex;
@@ -109,47 +114,117 @@
     cursor: pointer;
     background: none;
     border: none;
-    padding: 4px;
+    padding: 5px;
   }
+
   .hamburger span {
     display: block;
-    width: 24px;
+    width: 25px;
     height: 2px;
     background: var(--primary);
-    border-radius: 2px;
     transition: all 0.3s;
   }
-  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
   .mobile-menu {
     display: none;
     position: fixed;
-    top: 65px; left: 0; right: 0;
+    top: 70px; left: 0; right: 0;
     background: var(--background);
     border-bottom: 1px solid var(--secondary);
-    padding: 1.5rem 2rem;
-    z-index: 99;
+    padding: 1.5rem 5%;
+    z-index: 999;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1rem;
   }
+
   .mobile-menu.open { display: flex; }
+
   .mobile-menu a {
     font-size: 0.9rem;
     font-weight: 500;
-    letter-spacing: 0.06em;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(232, 213, 183, 0.3);
     color: var(--primary);
-    padding: 0.4rem 0;
-    border-bottom: 1px solid rgba(232,213,183,0.4);
   }
-  .mobile-menu a:last-child { border-bottom: none; }
 
   @media (min-width: 768px) {
     .nav-links { display: flex; }
     .hamburger { display: none; }
-    .mobile-menu { display: none !important; }
+  }
+
+  /* BUTTONS */
+  .btn-primary {
+    display: inline-block;
+    background: var(--cta);
+    color: #fff;
+    padding: 0.9rem 2rem;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: #a93226;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(192, 57, 43, 0.3);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--primary);
+    padding: 0.9rem 2rem;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 2px solid var(--primary);
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* SECTION COMMON */
+  section { padding: 5rem 5%; }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cta);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .section-divider {
+    width: 50px;
+    height: 3px;
+    background: var(--cta);
+    margin-bottom: 2rem;
   }
 
   /* HERO */
@@ -159,7 +234,7 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 65px;
+    padding: 0;
   }
 
   .hero-bg {
@@ -170,154 +245,128 @@
     background-position: center;
     z-index: 0;
   }
-  .hero-bg::after {
-    content: '';
+
+  .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, rgba(44,62,80,0.72) 0%, rgba(44,62,80,0.35) 55%, rgba(44,62,80,0.1) 100%);
+    background: linear-gradient(to right, rgba(44, 62, 80, 0.82) 0%, rgba(44, 62, 80, 0.5) 60%, rgba(44, 62, 80, 0.1) 100%);
+    z-index: 1;
   }
 
   .hero-content {
     position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    width: 100%;
+    z-index: 2;
+    padding: 8rem 5% 5rem;
+    max-width: 650px;
   }
 
-  .hero-text {
-    max-width: 560px;
-  }
-
-  .hero-eyebrow {
-    display: inline-block;
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232, 213, 183, 0.2);
+    border: 1px solid rgba(232, 213, 183, 0.5);
+    color: var(--secondary);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
     font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    font-weight: 500;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    color: var(--cta);
-    margin-bottom: 1.2rem;
-    background: rgba(201,162,39,0.15);
-    padding: 0.35rem 0.9rem;
-    border-radius: 20px;
-    border: 1px solid rgba(201,162,39,0.4);
+    margin-bottom: 1.5rem;
   }
 
   .hero-title {
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    font-weight: 700;
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 6vw, 4rem);
     color: #fff;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
   }
-  .hero-title em { color: var(--cta); font-style: italic; }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--secondary);
+  }
 
   .hero-subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-size: 1rem;
     color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
     font-weight: 300;
-    margin-bottom: 2.5rem;
-    letter-spacing: 0.02em;
+    max-width: 480px;
   }
 
   .hero-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-bottom: 2.5rem;
   }
 
-  .btn-primary {
+  .hero-btn-primary {
     background: var(--cta);
     color: #fff;
-    padding: 0.9rem 2rem;
+    padding: 1rem 2rem;
     border-radius: var(--radius);
-    font-family: var(--font-body);
-    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: background var(--transition), transform 0.2s, box-shadow 0.2s;
-    display: inline-block;
-  }
-  .btn-primary:hover {
-    background: #b08a1e;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201,162,39,0.35);
+    transition: all var(--transition);
+    border: 2px solid var(--cta);
   }
 
-  .btn-secondary {
+  .hero-btn-primary:hover {
+    background: #a93226;
+    border-color: #a93226;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(192, 57, 43, 0.4);
+  }
+
+  .hero-btn-secondary {
     background: transparent;
     color: #fff;
-    padding: 0.9rem 2rem;
+    padding: 1rem 2rem;
     border-radius: var(--radius);
-    font-family: var(--font-body);
-    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     border: 2px solid rgba(255,255,255,0.6);
-    cursor: pointer;
     transition: all var(--transition);
-    display: inline-block;
   }
-  .btn-secondary:hover {
-    background: rgba(255,255,255,0.12);
+
+  .hero-btn-secondary:hover {
+    background: rgba(255,255,255,0.15);
     border-color: #fff;
     transform: translateY(-2px);
   }
 
-  .hero-badge {
-    margin-top: 3rem;
+  .hero-stats {
     display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    color: rgba(255,255,255,0.8);
-    font-size: 0.82rem;
-  }
-  .hero-badge .stars { color: var(--cta); font-size: 1rem; }
-
-  /* SECTION COMMON */
-  section { padding: 5rem 2rem; }
-
-  .section-inner {
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 2rem;
+    flex-wrap: wrap;
   }
 
-  .section-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--cta);
-    margin-bottom: 0.8rem;
-    display: block;
+  .hero-stat {
+    text-align: left;
   }
 
-  .section-title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+  .hero-stat-number {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--secondary);
     font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 1.2rem;
+    line-height: 1;
   }
 
-  .section-divider {
-    width: 50px;
-    height: 3px;
-    background: var(--cta);
-    border-radius: 2px;
-    margin-bottom: 2rem;
-  }
-
-  .section-text {
-    font-size: 1rem;
-    color: #5a6a7a;
-    max-width: 640px;
-    line-height: 1.8;
+  .hero-stat-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.2rem;
   }
 
   /* ABOUT / PRESENTATION */
@@ -325,132 +374,147 @@
     background: #fff;
   }
 
-  .presentation-grid {
+  .presentation-inner {
+    max-width: 1100px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
     align-items: center;
   }
 
-  @media (min-width: 768px) {
-    .presentation-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
   .presentation-image {
-    border-radius: calc(var(--radius) * 2);
+    border-radius: var(--radius);
     overflow: hidden;
     aspect-ratio: 4/3;
-    position: relative;
+    box-shadow: 0 20px 60px rgba(44, 62, 80, 0.12);
   }
+
   .presentation-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s ease;
   }
-  .presentation-image:hover img { transform: scale(1.04); }
 
-  .presentation-image::before {
-    content: '';
-    position: absolute;
-    top: -12px; left: -12px;
-    width: 80px; height: 80px;
-    border: 3px solid var(--cta);
-    border-radius: calc(var(--radius) * 2);
-    z-index: 1;
-    opacity: 0.5;
+  .presentation-image:hover img { transform: scale(1.03); }
+
+  .presentation-text p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
   }
 
-  .features-list {
-    list-style: none;
-    margin-top: 1.5rem;
+  .presentation-highlights {
     display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
   }
-  .features-list li {
+
+  .highlight-chip {
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    font-size: 0.9rem;
-    color: #5a6a7a;
+    gap: 0.5rem;
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
   }
-  .features-list li::before {
-    content: '✦';
+
+  .highlight-chip::before {
+    content: '✓';
     color: var(--cta);
-    font-size: 0.7rem;
-    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  @media (min-width: 768px) {
+    .presentation-inner {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   /* SERVICES */
-  #services-populaires {
+  #services-vedettes {
     background: var(--background);
   }
 
   .services-header {
     text-align: center;
-    margin-bottom: 3.5rem;
+    max-width: 600px;
+    margin: 0 auto 3rem;
   }
-  .services-header .section-divider { margin: 0 auto 2rem; }
+
+  .services-header .section-divider {
+    margin: 0 auto 2rem;
+  }
 
   .services-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 1024px) {
-    .services-grid { grid-template-columns: repeat(3, 1fr); }
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
   .service-card {
     background: #fff;
-    border-radius: calc(var(--radius) * 2);
-    padding: 2.2rem 1.8rem;
-    border: 1px solid rgba(232,213,183,0.5);
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    border-radius: var(--radius);
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 20px rgba(44, 62, 80, 0.06);
+    transition: transform var(--transition), box-shadow var(--transition);
+    border-top: 4px solid transparent;
     position: relative;
     overflow: hidden;
   }
+
   .service-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 3px;
+    height: 4px;
     background: var(--cta);
     transform: scaleX(0);
     transition: transform var(--transition);
     transform-origin: left;
   }
-  .service-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(44,62,80,0.1);
-    border-color: rgba(201,162,39,0.3);
-  }
+
   .service-card:hover::before { transform: scaleX(1); }
 
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(44, 62, 80, 0.12);
+  }
+
   .service-icon {
-    font-size: 2rem;
-    margin-bottom: 1.2rem;
-    display: block;
+    width: 56px;
+    height: 56px;
+    background: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .service-card h3 {
-    font-size: 1.15rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
     color: var(--primary);
-    margin-bottom: 0.7rem;
   }
 
   .service-card p {
-    font-size: 0.88rem;
-    color: #7a8a9a;
+    font-size: 0.9rem;
+    color: #666;
     line-height: 1.7;
+  }
+
+  @media (min-width: 768px) {
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
   }
 
   /* REVIEWS */
@@ -461,65 +525,87 @@
 
   .reviews-header {
     text-align: center;
-    margin-bottom: 3.5rem;
+    margin-bottom: 3rem;
   }
-  .reviews-header .section-title { color: #fff; }
-  .reviews-header .section-label { color: var(--cta); }
-  .reviews-header .section-divider { margin: 0 auto 1.5rem; }
 
-  .reviews-meta {
-    font-size: 0.88rem;
+  .reviews-header .section-label { color: var(--secondary); }
+
+  .reviews-header .section-title { color: #fff; }
+
+  .reviews-header .section-divider { margin: 0 auto 1.5rem; background: var(--secondary); }
+
+  .reviews-rating-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .reviews-big-rating {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--secondary);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .reviews-stars-big {
+    display: flex;
+    gap: 3px;
+  }
+
+  .star-big {
+    color: #F1C40F;
+    font-size: 1.5rem;
+  }
+
+  .reviews-count {
+    font-size: 0.85rem;
     color: rgba(255,255,255,0.6);
-    margin-top: 0.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
   }
 
   .reviews-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    max-width: 900px;
+    margin: 0 auto;
   }
 
   .review-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: calc(var(--radius) * 2);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(232, 213, 183, 0.2);
+    border-radius: var(--radius);
     padding: 2rem;
-    position: relative;
     transition: background var(--transition);
   }
-  .review-card:hover { background: rgba(255,255,255,0.1); }
 
-  .review-card::before {
-    content: '"';
-    font-family: var(--font-heading);
-    font-size: 5rem;
-    color: var(--cta);
-    opacity: 0.3;
-    position: absolute;
-    top: -0.5rem;
-    left: 1.2rem;
-    line-height: 1;
+  .review-card:hover {
+    background: rgba(255,255,255,0.12);
   }
 
   .review-stars {
-    color: var(--cta);
-    font-size: 1rem;
+    display: flex;
+    gap: 3px;
     margin-bottom: 1rem;
-    letter-spacing: 0.1em;
   }
 
+  .star { color: #F1C40F; font-size: 1rem; }
+
   .review-text {
-    font-size: 0.92rem;
-    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
     line-height: 1.8;
     font-style: italic;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     white-space: pre-line;
   }
+
+  .review-text::before { content: '\201C'; }
+  .review-text::after { content: '\201D'; }
 
   .review-author {
     display: flex;
@@ -531,53 +617,51 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: var(--cta);
+    background: var(--secondary);
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--primary);
     font-weight: 700;
-    font-size: 0.85rem;
-    color: #fff;
     flex-shrink: 0;
   }
 
   .review-author-info strong {
     display: block;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
+    color: var(--secondary);
     font-weight: 600;
-    color: #fff;
-    font-family: var(--font-body);
   }
+
   .review-author-info span {
     font-size: 0.78rem;
     color: rgba(255,255,255,0.5);
   }
 
+  @media (min-width: 768px) {
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
   /* GALLERY */
-  #gallery {
+  #galerie {
     background: #fff;
   }
 
   .gallery-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
-  .gallery-header .section-divider { margin: 0 auto 1.5rem; }
+
+  .gallery-header .section-divider { margin: 0 auto 2rem; }
 
   .gallery-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-  }
-
-  @media (min-width: 768px) {
-    .gallery-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .gallery-grid .gallery-item:first-child {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
+    max-width: 1100px;
+    margin: 0 auto 2rem;
   }
 
   .gallery-item {
@@ -587,116 +671,123 @@
     position: relative;
     cursor: pointer;
   }
+
+  .gallery-item:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/7;
+  }
+
   .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
   }
-  .gallery-item::after {
-    content: '';
+
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  .gallery-item-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(44,62,80,0);
-    transition: background 0.3s;
+    background: rgba(44, 62, 80, 0);
+    transition: background var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .gallery-item:hover img { transform: scale(1.06); }
-  .gallery-item:hover::after { background: rgba(44,62,80,0.2); }
 
-  /* HOURS & LOCATION */
-  #hours-location {
+  .gallery-item:hover .gallery-item-overlay {
+    background: rgba(44, 62, 80, 0.3);
+  }
+
+  .gallery-center {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .gallery-item:first-child {
+      grid-column: 1 / 3;
+      aspect-ratio: 4/3;
+    }
+  }
+
+  /* TEAM */
+  #equipe {
     background: var(--background);
   }
 
-  .hours-location-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
+  .equipe-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
   }
 
-  @media (min-width: 768px) {
-    .hours-location-grid { grid-template-columns: 1fr 1fr; }
+  .equipe-text {
+    font-size: 1.05rem;
+    color: #666;
+    line-height: 1.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
   }
 
-  .hours-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-  }
-  .hours-table tr {
-    border-bottom: 1px solid rgba(232,213,183,0.5);
-  }
-  .hours-table tr:last-child { border-bottom: none; }
-  .hours-table td {
-    padding: 0.75rem 0;
-    font-size: 0.9rem;
-    color: #5a6a7a;
-  }
-  .hours-table td:first-child {
-    font-weight: 600;
-    color: var(--primary);
-    text-transform: capitalize;
-    width: 45%;
-  }
-  .hours-table tr.closed td { color: #aaa; }
-
-  .map-container {
-    border-radius: calc(var(--radius) * 2);
-    overflow: hidden;
-    height: 300px;
-    border: 1px solid rgba(232,213,183,0.5);
-  }
-  .map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .address-block {
-    margin-top: 1.5rem;
-    padding: 1.2rem;
-    background: #fff;
-    border-radius: var(--radius);
-    border: 1px solid rgba(232,213,183,0.5);
-    font-size: 0.9rem;
-    color: #5a6a7a;
+  .equipe-values {
     display: flex;
-    align-items: flex-start;
-    gap: 0.7rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
   }
-  .address-block .icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
 
-  /* CONTACT FORM */
-  #rendez-vous {
+  .equipe-value {
+    background: #fff;
+    border: 1px solid var(--secondary);
+    border-radius: 50px;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* CONTACT & HOURS */
+  #contact {
     background: #fff;
   }
 
-  .contact-grid {
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
   }
 
-  @media (min-width: 768px) {
-    .contact-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+  .contact-info h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 0.5rem;
   }
 
-  .contact-info p {
-    font-size: 0.95rem;
-    color: #5a6a7a;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
+  .contact-details {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .contact-detail {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.8rem;
-    margin-bottom: 1rem;
     font-size: 0.9rem;
-    color: #5a6a7a;
+    color: #555;
   }
-  .contact-detail .icon {
+
+  .contact-detail-icon {
     width: 36px;
     height: 36px;
     background: var(--secondary);
@@ -704,29 +795,90 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: 1rem;
     flex-shrink: 0;
+    margin-top: -2px;
   }
 
-  .contact-form {
-    background: var(--background);
-    padding: 2.5rem;
-    border-radius: calc(var(--radius) * 2);
-    border: 1px solid rgba(232,213,183,0.5);
+  .contact-detail strong {
+    display: block;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.88rem;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid rgba(232, 213, 183, 0.4);
+  }
+
+  .hours-table tr:last-child { border-bottom: none; }
+
+  .hours-table td {
+    padding: 0.7rem 0.5rem;
+    color: #555;
+  }
+
+  .hours-table td:first-child {
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: capitalize;
+    width: 45%;
+  }
+
+  .hours-table .closed {
+    color: var(--cta);
+    font-style: italic;
+  }
+
+  .hours-table tr.today td {
+    color: var(--cta);
+    font-weight: 600;
+  }
+
+  .map-container {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(44, 62, 80, 0.1);
+    margin-top: 1.5rem;
+  }
+
+  .map-container iframe {
+    width: 100%;
+    height: 280px;
+    border: none;
+    display: block;
+  }
+
+  .contact-form-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-form-section p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
   }
 
   .form-group {
-    margin-bottom: 1.3rem;
+    margin-bottom: 1.2rem;
   }
 
   .form-group label {
     display: block;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
     color: var(--primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
   }
 
   .form-group input,
@@ -734,118 +886,121 @@
   .form-group textarea {
     width: 100%;
     padding: 0.85rem 1rem;
-    border: 1.5px solid rgba(232,213,183,0.7);
+    border: 1.5px solid rgba(232, 213, 183, 0.6);
     border-radius: var(--radius);
-    background: #fff;
     font-family: var(--font-body);
     font-size: 0.9rem;
     color: var(--text);
+    background: var(--background);
     transition: border-color var(--transition), box-shadow var(--transition);
     outline: none;
-    appearance: none;
   }
+
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
     border-color: var(--cta);
-    box-shadow: 0 0 0 3px rgba(201,162,39,0.12);
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
   }
-  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
 
   .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .contact-inner { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr 1fr; }
   }
 
   /* TRUST SIGNALS */
   #trust {
     background: var(--secondary);
-    padding: 4rem 2rem;
+    padding: 3rem 5%;
   }
 
-  .trust-grid {
+  .trust-inner {
+    max-width: 1100px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  @media (min-width: 768px) {
-    .trust-grid { grid-template-columns: repeat(4, 1fr); }
+    gap: 1.5rem;
   }
 
   .trust-item {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255,255,255,0.5);
+    border-radius: var(--radius);
+    padding: 1.2rem;
   }
 
   .trust-icon {
-    font-size: 2rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+
+  .trust-item strong {
     display: block;
-  }
-
-  .trust-item h4 {
-    font-family: var(--font-heading);
-    font-size: 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
     color: var(--primary);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
   }
 
-  .trust-item p {
-    font-size: 0.8rem;
-    color: #7a6a5a;
+  .trust-item span {
+    font-size: 0.78rem;
+    color: #666;
+  }
+
+  @media (min-width: 768px) {
+    .trust-inner { grid-template-columns: repeat(5, 1fr); }
   }
 
   /* FOOTER */
   footer {
     background: var(--primary);
-    color: rgba(255,255,255,0.7);
-    padding: 3.5rem 2rem 2rem;
+    color: rgba(255,255,255,0.8);
+    padding: 3rem 5% 1.5rem;
   }
 
   .footer-inner {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-  }
-
-  .footer-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    margin-bottom: 3rem;
-  }
-
-  @media (min-width: 768px) {
-    .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+    margin-bottom: 2rem;
   }
 
   .footer-brand .nav-logo {
-    font-size: 1.8rem;
     color: #fff;
     display: block;
     margin-bottom: 1rem;
   }
 
   .footer-brand p {
-    font-size: 0.88rem;
-    line-height: 1.8;
-    max-width: 280px;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
   }
 
-  .footer-col h5 {
+  .footer-col h4 {
     font-family: var(--font-heading);
-    font-size: 1rem;
-    color: #fff;
-    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
   }
 
   .footer-col ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.5rem;
   }
 
   .footer-col ul li a {
@@ -853,28 +1008,27 @@
     color: rgba(255,255,255,0.6);
     transition: color var(--transition);
   }
-  .footer-col ul li a:hover { color: var(--cta); }
+
+  .footer-col ul li a:hover { color: var(--secondary); }
+
+  .footer-col address {
+    font-style: normal;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+  }
 
   .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    font-size: 0.8rem;
+    text-align: center;
+    font-size: 0.78rem;
     color: rgba(255,255,255,0.4);
   }
 
-  .footer-rating {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.6);
+  @media (min-width: 768px) {
+    .footer-inner { grid-template-columns: 2fr 1fr 1fr; }
   }
-  .footer-rating .stars { color: var(--cta); }
 
   /* SCROLL TO TOP */
   .scroll-top {
@@ -887,37 +1041,38 @@
     color: #fff;
     border: none;
     border-radius: 50%;
+    font-size: 1.2rem;
     cursor: pointer;
-    font-size: 1.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s, transform 0.3s;
-    z-index: 50;
-    box-shadow: 0 4px 16px rgba(201,162,39,0.4);
+    pointer-events: none;
+    transition: opacity var(--transition), transform var(--transition);
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4);
   }
-  .scroll-top.visible { opacity: 1; transform: translateY(0); }
-  .scroll-top:hover { background: #b08a1e; }
 
-  @media (min-width: 1024px) {
-    section { padding: 7rem 2rem; }
-    #trust { padding: 5rem 2rem; }
+  .scroll-top.visible {
+    opacity: 1;
+    pointer-events: all;
   }
+
+  .scroll-top:hover { transform: translateY(-3px); }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="navbar">
+<nav>
   <a href="#hero" class="nav-logo">La <span>Kage</span></a>
   <ul class="nav-links">
     <li><a href="#presentation">À propos</a></li>
-    <li><a href="#services-populaires">Services</a></li>
+    <li><a href="#services-vedettes">Services</a></li>
     <li><a href="#avis-clients">Avis</a></li>
-    <li><a href="#hours-location">Horaires</a></li>
-    <li><a href="#rendez-vous" class="nav-cta">Prendre rendez-vous</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Réserver</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -926,27 +1081,37 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#presentation" onclick="closeMobile()">À propos</a>
-  <a href="#services-populaires" onclick="closeMobile()">Services</a>
+  <a href="#services-vedettes" onclick="closeMobile()">Services</a>
   <a href="#avis-clients" onclick="closeMobile()">Avis clients</a>
-  <a href="#hours-location" onclick="closeMobile()">Horaires & Accès</a>
-  <a href="#rendez-vous" onclick="closeMobile()">Prendre rendez-vous</a>
+  <a href="#galerie" onclick="closeMobile()">Galerie</a>
+  <a href="#contact" onclick="closeMobile()">Contact & Horaires</a>
+  <a href="#contact" onclick="closeMobile()" style="color: var(--cta); font-weight: 700;">Réserver maintenant</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-text">
-      <span class="hero-eyebrow">Salon de coiffure & beauté · Nantes</span>
-      <h1 class="hero-title">La <em>Kage</em></h1>
-      <p class="hero-subtitle">Salon de coiffure & beauté à Nantes — où l'art de la coupe rencontre une ambiance musicale soignée.</p>
-      <div class="hero-buttons">
-        <a href="#rendez-vous" class="btn-primary">Prendre rendez-vous</a>
-        <a href="#services-populaires" class="btn-secondary">Découvrir nos services</a>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-in">
+    <div class="hero-badge">✂ Salon de coiffure & beauté · Nantes</div>
+    <h1 class="hero-title">La Kage –<br><em>L'art de la coiffure</em><br>à Nantes</h1>
+    <p class="hero-subtitle">Salon de coiffure et beauté au 1 Rue Yves Bodiguel, 44000 Nantes</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="hero-btn-primary">Prendre rendez-vous</a>
+      <a href="#services-vedettes" class="hero-btn-secondary">Découvrir nos services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">4,7/5</div>
+        <div class="hero-stat-label">Note moyenne</div>
       </div>
-      <div class="hero-badge">
-        <span class="stars">★★★★★</span>
-        <span>4,7/5 · 338 avis Google</span>
+      <div class="hero-stat">
+        <div class="hero-stat-number">338+</div>
+        <div class="hero-stat-label">Avis clients</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">★★★★★</div>
+        <div class="hero-stat-label">Google Reviews</div>
       </div>
     </div>
   </div>
@@ -954,284 +1119,300 @@
 
 <!-- PRESENTATION -->
 <section id="presentation">
-  <div class="section-inner">
-    <div class="presentation-grid">
-      <div class="presentation-image fade-in">
-        <img src="assets/gallery-1.jpg" alt="Intérieur du salon La Kage à Nantes" loading="lazy">
-      </div>
-      <div class="fade-in">
-        <span class="section-label">Notre histoire</span>
-        <h2 class="section-title">Bienvenue chez La Kage</h2>
-        <div class="section-divider"></div>
-        <p class="section-text">Au cœur de Nantes, La Kage est un salon de coiffure et de beauté où l'art de la coupe rencontre une ambiance musicale soignée. Notre équipe de coiffeurs et coiffeuses talentueux vous accueille dans un cadre chaleureux pour un moment de détente et de style.</p>
-        <ul class="features-list">
-          <li>Coiffeurs et coiffeuses expérimentés</li>
-          <li>Ambiance musicale soignée et unique</li>
-          <li>Produits haut de gamme sélectionnés</li>
-          <li>Certifié écologique — engagé pour la planète</li>
-          <li>Accueil chaleureux et personnalisé</li>
-        </ul>
-      </div>
+  <div class="presentation-inner">
+    <div class="presentation-image fade-in">
+      <img src="assets/gallery-1.jpg" alt="Intérieur du salon La Kage à Nantes">
     </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services-populaires">
-  <div class="section-inner">
-    <div class="services-header fade-in">
-      <span class="section-label">Ce que nous faisons</span>
-      <h2 class="section-title">Nos services</h2>
+    <div class="presentation-text fade-in">
+      <p class="section-label">Notre histoire</p>
+      <h2 class="section-title">Bienvenue chez La Kage</h2>
       <div class="section-divider"></div>
-      <p class="section-text" style="margin: 0 auto;">Coupes, coiffures, soins beauté : nous vous offrons des prestations de qualité à des prix abordables. Laissez-vous guider par nos experts pour un résultat à votre image.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card fade-in">
-        <span class="service-icon">✂️</span>
-        <h3>Coupes tendance</h3>
-        <p>Des coupes modernes et personnalisées adaptées à votre morphologie et à votre style de vie, réalisées par des coiffeurs talentueux.</p>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-icon">🎨</span>
-        <h3>Coloration</h3>
-        <p>Colorations, balayages, mèches et techniques de pointe pour sublimer votre couleur naturelle ou vous offrir un nouveau look éclatant.</p>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-icon">💆</span>
-        <h3>Soins capillaires</h3>
-        <p>Des soins nourrissants et réparateurs pour redonner vitalité, brillance et douceur à vos cheveux avec des produits haut de gamme.</p>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-icon">💍</span>
-        <h3>Coiffure mariage</h3>
-        <p>Chignons, tresses, ondulations romantiques… Nous créons la coiffure parfaite pour votre jour le plus important.</p>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-icon">✨</span>
-        <h3>Soins visage</h3>
-        <p>Des soins beauté pour le visage afin de vous offrir un moment de bien-être complet et repartir rayonnante.</p>
-      </div>
-      <div class="service-card fade-in">
-        <span class="service-icon">🎵</span>
-        <h3>Expérience unique</h3>
-        <p>Profitez d'une ambiance musicale soignée et d'un accueil irréprochable pour transformer votre visite en véritable moment de détente.</p>
+      <p>Situé au cœur de Nantes, La Kage est bien plus qu'un salon de coiffure : c'est un véritable espace d'artistes. Notre équipe de coiffeurs et coiffeuses talentueux vous accueille dans une ambiance chaleureuse et musicale, pour des coupes qui vous ressemblent.</p>
+      <p>Avec une note moyenne de 4,7/5 et plus de 338 avis clients, nous mettons un point d'honneur à offrir un service irréprochable et des prix abordables. Venez vivre l'expérience La Kage !</p>
+      <div class="presentation-highlights">
+        <span class="highlight-chip">Coiffeurs talentueux</span>
+        <span class="highlight-chip">Ambiance musicale</span>
+        <span class="highlight-chip">Prix abordables</span>
+        <span class="highlight-chip">4,7/5 sur Google</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
+<!-- SERVICES VEDETTES -->
+<section id="services-vedettes">
+  <div class="services-header fade-in">
+    <p class="section-label">Ce que nous faisons</p>
+    <h2 class="section-title">Nos services</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">✂</div>
+      <h3>Coupe & Coiffage</h3>
+      <p>Des coupes réalisées par des coiffeurs de talent, adaptées à votre style et à votre personnalité.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🎨</div>
+      <h3>Coloration & Soins</h3>
+      <p>Des soins et colorations pour sublimer votre chevelure, avec des produits de qualité.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">✨</div>
+      <h3>Beauté & Bien-Être</h3>
+      <p>Des prestations beauté pour un moment de détente et de mise en beauté complète.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS CLIENTS -->
 <section id="avis-clients">
-  <div class="section-inner">
-    <div class="reviews-header fade-in">
-      <span class="section-label">Témoignages</span>
-      <h2 class="section-title">Ils nous font confiance</h2>
-      <div class="section-divider"></div>
-      <p class="reviews-meta">Note Google : 4,7/5 · 338 avis</p>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card fade-in">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">« Un salon de coiffure exceptionnel avec un accueil irréprochable et une ambiance musicale de choix !
-Les coupes y sont réalisées par des coiffeurs-coiffeuses de talents !  Je quitte toujours ce salon d'artistes avec le sourire ! »</p>
-        <div class="review-author">
-          <div class="review-avatar">SP</div>
-          <div class="review-author-info">
-            <strong>Sophie PASSEMARD</strong>
-            <span>il y a 2&nbsp;semaines</span>
-          </div>
+  <div class="reviews-header fade-in">
+    <p class="section-label">Témoignages</p>
+    <h2 class="section-title">Ils nous font confiance</h2>
+    <div class="section-divider"></div>
+    <div class="reviews-rating-summary">
+      <span class="reviews-big-rating">4,7</span>
+      <div>
+        <div class="reviews-stars-big">
+          <span class="star-big">★</span>
+          <span class="star-big">★</span>
+          <span class="star-big">★</span>
+          <span class="star-big">★</span>
+          <span class="star-big">★</span>
         </div>
       </div>
-      <div class="review-card fade-in">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">« J'ai passé un excellent moment, la coupe qu'on m'a réalisée est juste parfaite, je suis vraiment très contente! En plus les prix sont vraiment très abordables, je recommande à 100% »</p>
-        <div class="review-author">
-          <div class="review-avatar">CZ</div>
-          <div class="review-author-info">
-            <strong>Camille Zubialde</strong>
-            <span>il y a 2&nbsp;semaines</span>
-          </div>
+    </div>
+    <p class="reviews-count">Basé sur 338 avis Google</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-in">
+      <div class="review-stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+      <p class="review-text">Un salon de coiffure exceptionnel avec un accueil irréprochable et une ambiance musicale de choix !
+Les coupes y sont réalisées par des coiffeurs-coiffeuses de talents !  Je quitte toujours ce salon d'artistes avec le sourire !</p>
+      <div class="review-author">
+        <div class="review-avatar">S</div>
+        <div class="review-author-info">
+          <strong>Sophie PASSEMARD</strong>
+          <span>il y a 2&nbsp;semaines</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="review-stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+      <p class="review-text">J'ai passé un excellent moment, la coupe qu'on m'a réalisée est juste parfaite, je suis vraiment très contente! En plus les prix sont vraiment très abordables, je recommande à 100%</p>
+      <div class="review-author">
+        <div class="review-avatar">C</div>
+        <div class="review-author-info">
+          <strong>Camille Zubialde</strong>
+          <span>il y a 2&nbsp;semaines</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="section-inner">
-    <div class="gallery-header fade-in">
-      <span class="section-label">Notre univers</span>
-      <h2 class="section-title">Aperçu du salon</h2>
-      <div class="section-divider"></div>
+<!-- GALERIE -->
+<section id="galerie">
+  <div class="gallery-header fade-in">
+    <p class="section-label">Galerie</p>
+    <h2 class="section-title">Notre univers</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item fade-in">
+      <img src="assets/hero.jpg" alt="Salon La Kage Nantes - ambiance">
+      <div class="gallery-item-overlay"></div>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item fade-in">
-        <img src="assets/hero.jpg" alt="Salon La Kage Nantes" loading="lazy">
-      </div>
-      <div class="gallery-item fade-in">
-        <img src="assets/gallery-1.jpg" alt="Coiffure La Kage" loading="lazy">
-      </div>
-      <div class="gallery-item fade-in">
-        <img src="assets/gallery-2.jpg" alt="Ambiance La Kage" loading="lazy">
-      </div>
+    <div class="gallery-item fade-in">
+      <img src="assets/gallery-1.jpg" alt="Coiffure La Kage Nantes">
+      <div class="gallery-item-overlay"></div>
+    </div>
+    <div class="gallery-item fade-in">
+      <img src="assets/gallery-2.jpg" alt="Salon de beauté La Kage Nantes">
+      <div class="gallery-item-overlay"></div>
+    </div>
+  </div>
+  <div class="gallery-center fade-in">
+    <a href="#contact" class="btn-primary">Réserver maintenant</a>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section id="equipe">
+  <div class="equipe-inner fade-in">
+    <p class="section-label">L'équipe</p>
+    <h2 class="section-title">Notre équipe</h2>
+    <div class="section-divider" style="margin: 0 auto 1.5rem;"></div>
+    <p class="equipe-text">Une équipe passionnée et créative, à l'écoute de vos envies pour vous offrir le meilleur de la coiffure.</p>
+    <div class="equipe-values">
+      <span class="equipe-value">🎵 Ambiance musicale</span>
+      <span class="equipe-value">🎨 Créativité</span>
+      <span class="equipe-value">💬 À votre écoute</span>
+      <span class="equipe-value">⭐ Excellence</span>
+      <span class="equipe-value">❤ Passion</span>
     </div>
   </div>
 </section>
 
-<!-- HOURS & LOCATION -->
-<section id="hours-location">
-  <div class="section-inner">
-    <div class="hours-location-grid">
-      <div class="fade-in">
-        <span class="section-label">Quand nous trouver</span>
-        <h2 class="section-title">Horaires d'ouverture</h2>
-        <div class="section-divider"></div>
-        <table class="hours-table">
-          <tbody>
-            <tr>
-              <td>Lundi</td>
-              <td>10:00 – 17:00</td>
-            </tr>
-            <tr>
-              <td>Mardi</td>
-              <td>10:00 – 20:30</td>
-            </tr>
-            <tr>
-              <td>Mercredi</td>
-              <td>10:00 – 20:30</td>
-            </tr>
-            <tr>
-              <td>Jeudi</td>
-              <td>10:00 – 21:30</td>
-            </tr>
-            <tr>
-              <td>Vendredi</td>
-              <td>10:00 – 21:30</td>
-            </tr>
-            <tr>
-              <td>Samedi</td>
-              <td>09:00 – 16:00</td>
-            </tr>
-            <tr class="closed">
-              <td>Dimanche</td>
-              <td>Fermé</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="address-block" style="margin-top:2rem;">
-          <span class="icon">📍</span>
+<!-- CONTACT & HORAIRES -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-info fade-in">
+      <p class="section-label">Nous trouver</p>
+      <h2 class="section-title">Contact & Horaires</h2>
+      <div class="section-divider"></div>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
           <div>
-            <strong style="display:block;color:var(--primary);font-size:0.9rem;margin-bottom:0.2rem;">Notre adresse</strong>
+            <strong>Adresse</strong>
             1 Rue Yves Bodiguel, 44000 Nantes, France
           </div>
         </div>
-      </div>
-      <div class="fade-in">
-        <span class="section-label">Nous trouver</span>
-        <h2 class="section-title">Accès</h2>
-        <div class="section-divider"></div>
-        <div class="map-container">
-          <iframe
-            src="https://www.google.com/maps?q=1+Rue+Yves+Bodiguel,+44000+Nantes,+France&output=embed"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="La Kage - 1 Rue Yves Bodiguel, 44000 Nantes">
-          </iframe>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">✉</div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:lakage.contact@gmail.com" style="color: var(--cta);">lakage.contact@gmail.com</a>
+          </div>
         </div>
+      </div>
+      <h3 style="font-size:1.1rem; margin-bottom:0.5rem; color:var(--primary);">Nos horaires</h3>
+      <table class="hours-table">
+        <tbody>
+          <tr>
+            <td>Lundi</td>
+            <td>10:00 – 17:00</td>
+          </tr>
+          <tr>
+            <td>Mardi</td>
+            <td>10:00 – 20:30</td>
+          </tr>
+          <tr>
+            <td>Mercredi</td>
+            <td>10:00 – 20:30</td>
+          </tr>
+          <tr>
+            <td>Jeudi</td>
+            <td>10:00 – 21:30</td>
+          </tr>
+          <tr>
+            <td>Vendredi</td>
+            <td>10:00 – 21:30</td>
+          </tr>
+          <tr>
+            <td>Samedi</td>
+            <td>09:00 – 16:00</td>
+          </tr>
+          <tr>
+            <td>Dimanche</td>
+            <td class="closed">Fermé</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="map-container" style="margin-top:1.5rem;">
+        <iframe
+          src="https://www.google.com/maps?q=1+Rue+Yves+Bodiguel,+44000+Nantes,+France&output=embed"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="La Kage - 1 Rue Yves Bodiguel, 44000 Nantes">
+        </iframe>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- CONTACT FORM -->
-<section id="rendez-vous">
-  <div class="section-inner">
-    <div class="contact-grid">
-      <div class="fade-in">
-        <span class="section-label">Nous contacter</span>
-        <h2 class="section-title">Prenez rendez-vous</h2>
-        <div class="section-divider"></div>
-        <p class="section-text">Contactez-nous par email ou passez nous voir directement au salon. Nous sommes ouverts du lundi au samedi, avec des horaires adaptés à votre emploi du temps.</p>
-        <div class="contact-detail" style="margin-top:1.5rem;">
-          <div class="icon">✉️</div>
-          <a href="mailto:lakage.contact@gmail.com" style="color:#5a6a7a;font-size:0.9rem;">lakage.contact@gmail.com</a>
+    <div class="contact-form-section fade-in">
+      <p class="section-label">Nous écrire</p>
+      <h3 class="section-title" style="font-size:1.6rem;">Prendre rendez-vous</h3>
+      <p>Envoyez-nous un message et nous vous répondrons dans les plus brefs délais.</p>
+      <form action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+          </div>
         </div>
-        <div class="contact-detail">
-          <div class="icon">📍</div>
-          <span style="font-size:0.9rem;color:#5a6a7a;">1 Rue Yves Bodiguel, 44000 Nantes, France</span>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="votre@email.com" required>
         </div>
-        <div class="contact-detail">
-          <div class="icon">🕐</div>
-          <span style="font-size:0.9rem;color:#5a6a7a;">Lun–Ven : 10h–21h30 · Sam : 9h–16h</span>
+        <div class="form-group">
+          <label for="telephone">Téléphone</label>
+          <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00">
         </div>
-      </div>
-      <div class="fade-in">
-        <form class="contact-form" action="#" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="prenom">Prénom</label>
-              <input type="text" id="prenom" name="prenom" placeholder="Marie" required>
-            </div>
-            <div class="form-group">
-              <label for="nom">Nom</label>
-              <input type="text" id="nom" name="nom" placeholder="Dupont" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="marie@exemple.fr" required>
-          </div>
-          <div class="form-group">
-            <label for="service">Service souhaité</label>
-            <select id="service" name="service">
-              <option value="">Choisir un service…</option>
-              <option>Coupe tendance</option>
-              <option>Coloration</option>
-              <option>Soin capillaire</option>
-              <option>Coiffure mariage</option>
-              <option>Soin visage</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="date">Date souhaitée</label>
-            <input type="date" id="date" name="date">
-          </div>
-          <div class="form-group">
-            <label for="message">Message (optionnel)</label>
-            <textarea id="message" name="message" placeholder="Précisez vos souhaits…"></textarea>
-          </div>
-          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Envoyer ma demande</button>
-        </form>
-      </div>
+        <div class="form-group">
+          <label for="service">Service souhaité</label>
+          <select id="service" name="service">
+            <option value="">Choisissez un service</option>
+            <option value="coupe">Coupe & Coiffage</option>
+            <option value="coloration">Coloration & Soins</option>
+            <option value="beaute">Beauté & Bien-Être</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Votre message, vos disponibilités..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;">Envoyer ma demande</button>
+      </form>
     </div>
   </div>
 </section>
 
 <!-- TRUST SIGNALS -->
 <section id="trust">
-  <div class="trust-grid">
+  <div class="trust-inner">
     <div class="trust-item fade-in">
       <span class="trust-icon">⭐</span>
-      <h4>Avis Google 4,7/5</h4>
-      <p>338 avis clients vérifiés</p>
+      <div>
+        <strong>Avis Google 5 étoiles</strong>
+        <span>4,7/5 · 338 avis</span>
+      </div>
     </div>
     <div class="trust-item fade-in">
-      <span class="trust-icon">✂️</span>
-      <h4>Coiffeurs expérimentés</h4>
-      <p>Équipe passionnée et talentueuse</p>
-    </div>
-    <div class="trust-item fade-in">
-      <span class="trust-icon">💎</span>
-      <h4>Produits haut de gamme</h4>
-      <p>Sélection rigoureuse de marques premium</p>
+      <span class="trust-icon">✂</span>
+      <div>
+        <strong>Coiffeurs expérimentés</strong>
+        <span>Artistes passionnés</span>
+      </div>
     </div>
     <div class="trust-item fade-in">
       <span class="trust-icon">🌿</span>
-      <h4>Certifié écologique</h4>
-      <p>Engagé pour un salon responsable</p>
+      <div>
+        <strong>Produits haut de gamme</strong>
+        <span>Certification bio</span>
+      </div>
+    </div>
+    <div class="trust-item fade-in">
+      <span class="trust-icon">🎵</span>
+      <div>
+        <strong>Ambiance conviviale</strong>
+        <span>Musicale & chaleureuse</span>
+      </div>
+    </div>
+    <div class="trust-item fade-in">
+      <span class="trust-icon">💰</span>
+      <div>
+        <strong>Prix abordables</strong>
+        <span>Qualité accessible</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1239,38 +1420,32 @@ Les coupes y sont réalisées par des coiffeurs-coiffeuses de talents !  Je quit
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="nav-logo">La <span>Kage</span></span>
-        <p>Salon de coiffure & beauté au cœur de Nantes. Une expérience unique alliant style, musique et savoir-faire.</p>
-        <div class="footer-rating" style="margin-top:1.2rem;">
-          <span class="stars">★★★★★</span>
-          <span>4,7/5 · 338 avis Google</span>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h5>Navigation</h5>
-        <ul>
-          <li><a href="#presentation">À propos</a></li>
-          <li><a href="#services-populaires">Services</a></li>
-          <li><a href="#avis-clients">Avis clients</a></li>
-          <li><a href="#hours-location">Horaires</a></li>
-          <li><a href="#rendez-vous">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="mailto:lakage.contact@gmail.com">lakage.contact@gmail.com</a></li>
-          <li><a href="#hours-location">1 Rue Yves Bodiguel</a></li>
-          <li><a href="#hours-location">44000 Nantes, France</a></li>
-        </ul>
-      </div>
+    <div class="footer-brand">
+      <span class="nav-logo">La <span style="color:var(--secondary);">Kage</span></span>
+      <p>Salon de coiffure et beauté au cœur de Nantes. Un espace d'artistes où chaque coupe est une œuvre, dans une ambiance musicale et chaleureuse.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© 2024 La Kage · Salon de coiffure & beauté à Nantes</span>
-      <span>Salon de coiffure Nantes · Coiffeur Nantes centre</span>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#presentation">À propos</a></li>
+        <li><a href="#services-vedettes">Services</a></li>
+        <li><a href="#avis-clients">Avis clients</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#equipe">Notre équipe</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
+    <div class="footer-col">
+      <h4>Nous trouver</h4>
+      <address>
+        1 Rue Yves Bodiguel<br>
+        44000 Nantes, France<br><br>
+        <a href="mailto:lakage.contact@gmail.com" style="color:rgba(255,255,255,0.6); transition:color 0.3s;">lakage.contact@gmail.com</a>
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 La Kage – Salon de coiffure & beauté à Nantes · Tous droits réservés</p>
   </div>
 </footer>
 
@@ -1278,31 +1453,34 @@ Les coupes y sont réalisées par des coiffeurs-coiffeuses de talents !  Je quit
 <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">↑</button>
 
 <script>
-  // NAV SCROLL
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
-  });
-
-  // HAMBURGER
+  // HAMBURGER MENU
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
+
   hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
   });
+
   function closeMobile() {
-    hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
   }
 
   // SCROLL TO TOP
-  document.getElementById('scrollTop').addEventListener('click', () => {
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.classList.add('visible');
+    } else {
+      scrollTopBtn.classList.remove('visible');
+    }
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // INTERSECTION OBSERVER — FADE IN
+  // INTERSECTION OBSERVER - FADE IN
+  const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1312,9 +1490,27 @@ Les coupes y sont réalisées par des coiffeurs-coiffeuses de talents !  Je quit
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.fade-in').forEach((el, i) => {
-    el.style.transitionDelay = (i % 4) * 0.1 + 's';
-    observer.observe(el);
+  fadeEls.forEach(el => observer.observe(el));
+
+  // HIGHLIGHT TODAY IN HOURS TABLE
+  const days = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  const today = days[new Date().getDay()];
+  const rows = document.querySelectorAll('.hours-table tr');
+  rows.forEach(row => {
+    const dayCell = row.querySelector('td:first-child');
+    if (dayCell && dayCell.textContent.trim().toLowerCase() === today) {
+      row.classList.add('today');
+    }
+  });
+
+  // NAV SCROLL EFFECT
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.boxShadow = '0 4px 20px rgba(44,62,80,0.1)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
   });
 </script>
 </body>
